@@ -46,12 +46,13 @@ app.get('/process', (req, res) => {
     });
 });
 
-app.get('/contact', (req, res) => {
-    res.render('contact', {
-        title: 'Contact Us - Artistic Projects',
-        currentPage: 'contact'
-    });
-});
+// Remove this entire block:
+// app.get('/contact', (req, res) => {
+//     res.render('contact', {
+//         title: 'Contact Us - Artistic Projects',
+//         currentPage: 'contact'
+//     });
+// });
 
 // Uruchomienie serwera
 app.listen(PORT, () => {
