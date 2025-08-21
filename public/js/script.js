@@ -66,3 +66,58 @@ document.querySelectorAll('.service-card, .stat-item').forEach(el => {
     el.style.transition = 'all 0.6s ease';
     observer.observe(el);
 });
+
+// Interaktywne animacje tła hero
+const hero = document.querySelector('.hero');
+const particles = document.querySelector('.particles');
+
+if (hero && particles) {
+    // Animacja ruchu myszy
+    hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+        
+        const moveX = (x - 0.5) * 20;
+        const moveY = (y - 0.5) * 20;
+        
+        particles.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    });
+    
+    // Reset pozycji gdy mysz opuszcza hero
+    hero.addEventListener('mouseleave', () => {
+        particles.style.transform = 'translate(0, 0)';
+    });
+}
+
+// Animacje fade-in dla elementów hero
+const heroElements = document.querySelectorAll('.hero-title, .hero-subtitle, .hero-buttons');
+
+const heroObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }, index * 200);
+        }
+    });
+}, { threshold: 0.1 });
+
+heroElements.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'all 0.8s ease';
+    heroObserver.observe(el);
+});
+
+// Dodatkowe efekty przy scroll
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const parallax = document.querySelector('.hero-background');
+    
+    if (parallax) {
+        const speed = scrolled * 0.5;
+        parallax.style.transform = `translateY(${speed}px)`;
+    }
+});
