@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const PORT = process.env.DEVIL_NODEJS_PORT || 29384; // fallback na 29384
+const PORT = process.env.PORT || 3000; // zmień z DEVIL_NODEJS_PORT na PORT
 
 // Ustawienie silnika szablonów EJS
 app.set('view engine', 'ejs');
