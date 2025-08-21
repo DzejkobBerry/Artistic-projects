@@ -41,6 +41,14 @@ window.addEventListener('scroll', () => {
 
 // Add loading animation
 window.addEventListener('load', () => {
+    const loading = document.getElementById('loading');
+    if (loading) {
+        loading.classList.add('hidden');
+        // Opcjonalnie: całkowite usunięcie po animacji
+        setTimeout(() => {
+            loading.style.display = 'none';
+        }, 500);
+    }
     document.body.classList.add('loaded');
 });
 
