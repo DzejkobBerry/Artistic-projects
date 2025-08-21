@@ -1,299 +1,515 @@
 <%- include('partials/header') %>
 
+<!-- Loading Animation -->
+<div class="loading" id="loading">
+    <div class="spinner"></div>
+</div>
+
 <main>
-    <!-- Sekcja Hero -->
-    <section class="hero">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
         <div class="hero-background">
+            <div class="geometric-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+                <div class="shape shape-5"></div>
+            </div>
             <div class="particles"></div>
         </div>
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">
-                    Kreatywność<br>
-                    <span class="highlight">bez granic</span>
-                </h1>
-                <p class="hero-subtitle">
-                    Druk • Grafika • Ulotki • Wizytówki • Druk 3D • Grawerowanie Laserowe • Naklejki
-                </p>
+                <h1 class="hero-title">ARTISTIC PROJECTS</h1>
+                <p class="hero-subtitle">Tworzymy niepowtarzalne projekty graficzne, które wyróżniają Twoją markę</p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Zaprojektuj z nami</a>
-                    <a href="/portfolio" class="btn btn-secondary">Zobacz nasze prace</a>
+                    <a href="#portfolio" class="btn btn-primary">Zobacz Nasze Prace</a>
+                    <a href="#contact" class="btn btn-secondary">Skontaktuj się z Nami</a>
                 </div>
             </div>
         </div>
         <div class="scroll-indicator">
             <div class="scroll-icon"></div>
-            <span>Przewiń w dół</span>
         </div>
     </section>
 
-    <!-- Sekcja O Nas -->
-    <section class="about-preview">
+    <!-- About Section -->
+    <section class="about-section" id="about">
         <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">O Nas</h2>
+                <p class="section-subtitle">Poznaj naszą historię i pasję do tworzenia</p>
+            </div>
             <div class="about-content">
                 <div class="about-text">
-                    <h2>O Nas</h2>
-                    <p>Artistic Projects to kreatywna siła napędowa, która specjalizuje się w ożywianiu Twoich wizualnych pomysłów. Łączymy artystyczną wizję z techniczną ekspertyzą, aby dostarczać wyjątkowe rezultaty w różnych mediach.</p>
-                    <a href="/about" class="btn btn-outline">Dowiedz się więcej</a>
-                </div>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <span class="stat-number">7+</span>
-                        <span class="stat-label">Lat Doświadczenia</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">500+</span>
-                        <span class="stat-label">Zrealizowanych Projektów</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">50+</span>
-                        <span class="stat-label">Stałych Klientów</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">6</span>
-                        <span class="stat-label">Usług Kreatywnych</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sekcja Informacji o Firmie -->
-    <section class="company-info">
-        <div class="container">
-            <div class="company-content">
-                <div class="company-text">
-                    <h2>Nasza Firma</h2>
-                    <p class="company-intro">Od 2017 roku tworzymy wyjątkowe projekty graficzne i realizujemy niestandardowe zamówienia dla klientów z całej Polski.</p>
-                    
-                    <div class="company-features">
+                    <h3>Kreatywność bez granic</h3>
+                    <p>Jesteśmy zespołem doświadczonych grafików i projektantów, którzy od lat tworzą wyjątkowe projekty dla klientów z różnych branż. Nasza pasja to przekształcanie pomysłów w wizualne dzieła sztuki.</p>
+                    <p>Specjalizujemy się w projektowaniu graficznym, brandingu, projektach reklamowych oraz tworzeniu unikalnych rozwiązań wizualnych, które pomagają naszym klientom wyróżnić się na rynku.</p>
+                    <div class="features-grid">
                         <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="icon-quality"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h3>Najwyższa jakość</h3>
-                                <p>Używamy tylko najlepszych materiałów i najnowszych technologii druku</p>
-                            </div>
+                            <div class="feature-icon">🎨</div>
+                            <h4>Kreatywność</h4>
+                            <p>Unikalne i innowacyjne rozwiązania</p>
                         </div>
-                        
                         <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="icon-speed"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h3>Szybka realizacja</h3>
-                                <p>Większość projektów realizujemy w ciągu 2-3 dni roboczych</p>
-                            </div>
+                            <div class="feature-icon">⚡</div>
+                            <h4>Szybkość</h4>
+                            <p>Terminowa realizacja projektów</p>
                         </div>
-                        
                         <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="icon-support"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h3>Pełne wsparcie</h3>
-                                <p>Pomagamy na każdym etapie - od koncepcji po finalizację projektu</p>
-                            </div>
+                            <div class="feature-icon">💎</div>
+                            <h4>Jakość</h4>
+                            <p>Najwyższa jakość wykonania</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🤝</div>
+                            <h4>Współpraca</h4>
+                            <p>Indywidualne podejście do klienta</p>
                         </div>
                     </div>
                 </div>
-                
-                <div class="company-image">
-                    <img src="/images/company-team.jpg" alt="Zespół Artistic Projects">
-                    <div class="company-badge">
-                        <span class="badge-text">Zaufało nam już</span>
-                        <span class="badge-number">500+</span>
-                        <span class="badge-text">klientów</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sekcja Projektów -->
-    <section class="projects-showcase">
-        <div class="container">
-            <h2>Nasze Projekty</h2>
-            <p class="section-subtitle">Poznaj nasze najnowsze realizacje i zobacz, jak pomagamy klientom osiągnąć ich cele</p>
-            <div class="projects-grid">
-                <div class="project-card featured">
-                    <div class="project-image">
-                        <img src="/images/project-featured.jpg" alt="Projekt główny">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3>Kompleksowa identyfikacja wizualna</h3>
-                                <p>Logo, wizytówki, ulotki i materiały promocyjne dla lokalnej firmy</p>
-                                <div class="project-tags">
-                                    <span class="tag">Projektowanie Graficzne</span>
-                                    <span class="tag">Branding</span>
-                                    <span class="tag">Druk</span>
-                                </div>
-                            </div>
+                <div class="about-stats">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="150">0</div>
+                            <div class="stat-label">Zadowolonych Klientów</div>
                         </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="/images/project-1.jpg" alt="Projekt 1">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3>Koszulki z nadrukiem</h3>
-                                <p>Unikalne wzory dla zespołu sportowego</p>
-                                <div class="project-tags">
-                                    <span class="tag">Druk na Odzieży</span>
-                                </div>
-                            </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="300">0</div>
+                            <div class="stat-label">Zrealizowanych Projektów</div>
                         </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="/images/project-2.jpg" alt="Projekt 2">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3>Grawerowanie laserowe</h3>
-                                <p>Personalizowane gadżety firmowe</p>
-                                <div class="project-tags">
-                                    <span class="tag">Grawerowanie Laserowe</span>
-                                </div>
-                            </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="5">0</div>
+                            <div class="stat-label">Lat Doświadczenia</div>
                         </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="/images/project-3.jpg" alt="Projekt 3">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3>Druk 3D</h3>
-                                <p>Prototypy i modele architektoniczne</p>
-                                <div class="project-tags">
-                                    <span class="tag">Druk 3D</span>
-                                </div>
-                            </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="24">0</div>
+                            <div class="stat-label">Godziny Wsparcia</div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center">
-                <a href="/portfolio" class="btn btn-primary">Zobacz wszystkie projekty</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sekcja Opinii -->
-    <section class="testimonials">
-        <div class="container">
-            <h2>Opinie Klientów</h2>
-            <p class="section-subtitle">Zobacz, co mówią o nas nasi zadowoleni klienci</p>
-            
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="stars">
-                            <span>★★★★★</span>
-                        </div>
-                        <p>"Fantastyczna jakość i profesjonalne podejście. Koszulki dla naszego zespołu wyszły idealnie - kolory żywe, nadruk trwały. Polecam!"</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="/images/client-1.jpg" alt="Anna Kowalska">
-                        </div>
-                        <div class="author-info">
-                            <h4>Anna Kowalska</h4>
-                            <span>Trener zespołu sportowego</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="stars">
-                            <span>★★★★★</span>
-                        </div>
-                        <p>"Szybko, tanio i bardzo profesjonalnie. Logo dla mojej firmy zostało zaprojektowane dokładnie według moich oczekiwań. Współpraca na najwyższym poziomie."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="/images/client-2.jpg" alt="Marcin Nowak">
-                        </div>
-                        <div class="author-info">
-                            <h4>Marcin Nowak</h4>
-                            <span>Właściciel restauracji</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="stars">
-                            <span>★★★★★</span>
-                        </div>
-                        <p>"Grawerowanie laserowe na najwyższym poziomie. Gadżety firmowe wyszły przepięknie - każdy detal dopracowany. Będę korzystać z usług ponownie."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="/images/client-3.jpg" alt="Katarzyna Wiśniewska">
-                        </div>
-                        <div class="author-info">
-                            <h4>Katarzyna Wiśniewska</h4>
-                            <span>Dyrektor marketingu</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="testimonials-summary">
-                <div class="summary-stats">
-                    <div class="summary-item">
-                        <span class="summary-number">4.9</span>
-                        <span class="summary-label">Średnia ocena</span>
-                        <div class="stars">★★★★★</div>
-                    </div>
-                    <div class="summary-item">
-                        <span class="summary-number">98%</span>
-                        <span class="summary-label">Zadowolonych klientów</span>
-                    </div>
-                    <div class="summary-item">
-                        <span class="summary-number">150+</span>
-                        <span class="summary-label">Pozytywnych opinii</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Podgląd Usług -->
-    <section class="services-preview">
+    <!-- Services Section -->
+    <section class="services-section" id="services">
         <div class="container">
-            <h2>Nasze Usługi</h2>
-            <p class="section-subtitle">Oferujemy szeroki zakres usług kreatywnych, aby ożywić Twoje pomysły</p>
+            <div class="section-header">
+                <h2 class="section-title">Nasze Usługi</h2>
+                <p class="section-subtitle">Kompleksowe rozwiązania graficzne dla Twojego biznesu</p>
+            </div>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="icon-print"></i>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        </svg>
                     </div>
-                    <h3>Druk na Odzieży</h3>
-                    <p>Niestandardowe projekty drukowane na koszulkach, bluzach i innych ubraniach z użyciem wysokiej jakości materiałów i technik.</p>
+                    <h3>Projektowanie Logo</h3>
+                    <p>Tworzymy unikalne i zapamiętujące się logo, które idealnie reprezentują Twoją markę i wyróżniają ją na rynku.</p>
+                    <ul>
+                        <li>Analiza marki i konkurencji</li>
+                        <li>Koncepcje i szkice</li>
+                        <li>Finalizacja w różnych formatach</li>
+                        <li>Księga znaku</li>
+                    </ul>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="icon-design"></i>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="2"/>
+                            <path d="M21 15L16 10L5 21" stroke="currentColor" stroke-width="2"/>
+                        </svg>
                     </div>
-                    <h3>Projektowanie Graficzne</h3>
-                    <p>Profesjonalne usługi projektowe dla logo, materiałów brandingowych, ilustracji i grafik cyfrowych.</p>
+                    <h3>Materiały Reklamowe</h3>
+                    <p>Projektujemy efektywne materiały reklamowe, które przyciągają uwagę i skutecznie komunikują Twoje przesłanie.</p>
+                    <ul>
+                        <li>Ulotki i broszury</li>
+                        <li>Plakaty i banery</li>
+                        <li>Wizytówki</li>
+                        <li>Katalogi produktów</li>
+                    </ul>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="icon-flyer"></i>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.5 2H6A2 2 0 0 0 4 4V20A2 2 0 0 0 6 22H18A2 2 0 0 0 20 20V7.5L14.5 2Z" stroke="currentColor" stroke-width="2"/>
+                            <polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="2"/>
+                        </svg>
                     </div>
-                    <h3>Ulotki i Wizytówki</h3>
-                    <p>Przyciągające wzrok materiały drukowane, które pozostawiają trwałe wrażenie dla Twojej firmy lub wydarzenia.</p>
+                    <h3>Identyfikacja Wizualna</h3>
+                    <p>Kompleksowa identyfikacja wizualna, która tworzy spójny i profesjonalny wizerunek Twojej firmy.</p>
+                    <ul>
+                        <li>Paleta kolorów</li>
+                        <li>Typografia</li>
+                        <li>Wzorce graficzne</li>
+                        <li>Aplikacje marki</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2"/>
+                            <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Projekty Cyfrowe</h3>
+                    <p>Nowoczesne projekty cyfrowe dostosowane do potrzeb internetu i mediów społecznościowych.</p>
+                    <ul>
+                        <li>Grafiki na social media</li>
+                        <li>Banery internetowe</li>
+                        <li>Prezentacje</li>
+                        <li>Infografiki</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17 3A2.828 2.828 0 1 1 19.828 5.828A2.828 2.828 0 0 1 17 3ZM21 12V8A2 2 0 0 0 19 6H5A2 2 0 0 0 3 8V16A2 2 0 0 0 5 18H11" stroke="currentColor" stroke-width="2"/>
+                            <path d="M16 19H22V13H16V19Z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Druk Tekstylny</h3>
+                    <p>Profesjonalne projekty do druku na tekstyliach - od koszulek po torby reklamowe.</p>
+                    <ul>
+                        <li>Projekty na koszulki</li>
+                        <li>Torby reklamowe</li>
+                        <li>Odzież firmowa</li>
+                        <li>Gadżety promocyjne</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 11H15M9 15H15M17 21H7A2 2 0 0 1 5 19V5A2 2 0 0 1 7 3H12.586A1 1 0 0 1 13.293 3.293L18.707 8.707A1 1 0 0 1 19 9.414V19A2 2 0 0 1 17 21Z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Konsultacje</h3>
+                    <p>Profesjonalne doradztwo w zakresie strategii wizualnej i brandingu dla Twojej firmy.</p>
+                    <ul>
+                        <li>Analiza marki</li>
+                        <li>Strategia wizualna</li>
+                        <li>Optymalizacja projektów</li>
+                        <li>Wsparcie techniczne</li>
+                    </ul>
                 </div>
             </div>
-            <div class="text-center">
-                <a href="/services" class="btn btn-primary">Zobacz Wszystkie Usługi</a>
+        </div>
+    </section>
+
+    <!-- How We Work Section -->
+    <section class="process-section" id="process">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Jak Działamy</h2>
+                <p class="section-subtitle">Nasz sprawdzony proces tworzenia projektów</p>
+            </div>
+            <div class="process-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">01</div>
+                    <div class="timeline-content">
+                        <h3>Konsultacja</h3>
+                        <p>Poznajemy Twoje potrzeby, cele i wizję projektu. Analizujemy rynek i konkurencję.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">02</div>
+                    <div class="timeline-content">
+                        <h3>Koncepcja</h3>
+                        <p>Tworzymy pierwsze szkice i koncepcje projektowe dopasowane do Twoich wymagań.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">03</div>
+                    <div class="timeline-content">
+                        <h3>Projektowanie</h3>
+                        <p>Rozwijamy wybraną koncepcję, tworząc szczegółowy projekt graficzny.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">04</div>
+                    <div class="timeline-content">
+                        <h3>Korekty</h3>
+                        <p>Wprowadzamy poprawki i modyfikacje zgodnie z Twoimi uwagami.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">05</div>
+                    <div class="timeline-content">
+                        <h3>Finalizacja</h3>
+                        <p>Przygotowujemy finalne pliki w odpowiednich formatach i rozdzielczościach.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">06</div>
+                    <div class="timeline-content">
+                        <h3>Wsparcie</h3>
+                        <p>Zapewniamy wsparcie techniczne i pomoc w implementacji projektów.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-section" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nasze Projekty</h2>
+                <p class="section-subtitle">Galeria naszych najlepszych realizacji</p>
+            </div>
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">Wszystkie</button>
+                <button class="filter-btn" data-filter="logo">Logo</button>
+                <button class="filter-btn" data-filter="branding">Branding</button>
+                <button class="filter-btn" data-filter="print">Druk</button>
+                <button class="filter-btn" data-filter="digital">Digital</button>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="logo">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <h4>Logo Restauracji</h4>
+                            <p>Eleganckie logo dla restauracji fine dining</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="branding">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <h4>Identyfikacja Wizualna</h4>
+                            <p>Kompleksowy branding dla startupu technologicznego</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="print">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <h4>Katalog Produktów</h4>
+                            <p>Profesjonalny katalog dla firmy meblarskiej</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="digital">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <h4>Kampania Social Media</h4>
+                            <p>Grafiki dla kampanii marketingowej</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="logo">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <h4>Logo Fitness</h4>
+                            <p>Dynamiczne logo dla siłowni</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="print">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <h4>Ulotki Reklamowe</h4>
+                            <p>Seria ulotek dla centrum handlowego</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Opinie Klientów</h2>
+                <p class="section-subtitle">Co mówią o nas nasi zadowoleni klienci</p>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial-item active">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <span>★★★★★</span>
+                        </div>
+                        <p>"Artistic Projects stworzyli dla nas niesamowite logo i całą identyfikację wizualną. Profesjonalizm na najwyższym poziomie!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Anna Kowalska</h4>
+                                <span>CEO, TechStart</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <span>★★★★★</span>
+                        </div>
+                        <p>"Fantastyczna współpraca! Zespół zrozumiał nasze potrzeby i stworzył projekt, który przewyższył nasze oczekiwania."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Marcin Nowak</h4>
+                                <span>Właściciel, Restauracja Smaków</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <span>★★★★★</span>
+                        </div>
+                        <p>"Szybko, profesjonalnie i w doskonałej cenie. Polecam wszystkim, którzy szukają kreatywnych rozwiązań graficznych."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Katarzyna Wiśniewska</h4>
+                                <span>Marketing Manager, FitLife</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonials-nav">
+                <button class="nav-btn prev-btn">‹</button>
+                <div class="testimonials-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                </div>
+                <button class="nav-btn next-btn">›</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Skontaktuj się z Nami</h2>
+                <p class="section-subtitle">Rozpocznijmy współpracę już dziś</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Porozmawiajmy o Twoim projekcie</h3>
+                    <p>Jesteśmy gotowi pomóc Ci w realizacji Twoich marzeń graficznych. Skontaktuj się z nami, a omówimy szczegóły Twojego projektu.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21 10C21 17 12 23 12 23S3 17 3 10A9 9 0 0 1 12 1A9 9 0 0 1 21 10Z" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Adres</h4>
+                                <p>ul. Kreatywna 123<br>00-001 Warszawa</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22 16.92V19.92A2 2 0 0 1 20.02 21.92C8.91 21.92 0 13.01 0 1.92A2 2 0 0 1 2 -0.08H5A2 2 0 0 1 7 1.92V4.92A2 2 0 0 1 6.5 6.42L5 7.92C6.5 11.42 10.5 15.42 14 16.92L15.5 15.42A2 2 0 0 1 17 14.92H20A2 2 0 0 1 22 16.92Z" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Telefon</h4>
+                                <p>+48 123 456 789</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2"/>
+                                    <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>kontakt@artisticprojects.pl</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                    <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Godziny pracy</h4>
+                                <p>Pon-Pt: 9:00 - 18:00<br>Sob: 10:00 - 14:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Imię i nazwisko *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefon</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Rodzaj usługi *</label>
+                            <select id="service" name="service" required>
+                                <option value="">Wybierz usługę</option>
+                                <option value="logo">Projektowanie Logo</option>
+                                <option value="branding">Identyfikacja Wizualna</option>
+                                <option value="print">Materiały Reklamowe</option>
+                                <option value="digital">Projekty Cyfrowe</option>
+                                <option value="textile">Druk Tekstylny</option>
+                                <option value="consultation">Konsultacje</option>
+                                <option value="other">Inne</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="budget">Budżet</label>
+                            <select id="budget" name="budget">
+                                <option value="">Wybierz przedział</option>
+                                <option value="500-1000">500 - 1000 zł</option>
+                                <option value="1000-2500">1000 - 2500 zł</option>
+                                <option value="2500-5000">2500 - 5000 zł</option>
+                                <option value="5000+">Powyżej 5000 zł</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Opis projektu *</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Opisz swój projekt, wymagania i oczekiwania..." required></textarea>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="privacy" name="privacy" required>
+                                <span class="checkmark"></span>
+                                Akceptuję <a href="#">politykę prywatności</a> *
+                            </label>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="newsletter" name="newsletter">
+                                <span class="checkmark"></span>
+                                Chcę otrzymywać newsletter z nowościami
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-submit">
+                            <span class="btn-text">Wyślij Wiadomość</span>
+                            <span class="btn-loading">Wysyłanie...</span>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
