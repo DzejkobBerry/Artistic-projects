@@ -130,10 +130,86 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Language Switcher Functionality
-const languageOptions = document.querySelectorAll('.language-option');
-const languageIndicator = document.querySelector('.language-indicator');
+// Language Switcher Dropdown Functionality
+const languageButton = document.getElementById('languageButton');
+const languageOptions = document.getElementById('languageOptions');
+const languageOptionItems = document.querySelectorAll('.language-option');
 let currentLanguage = 'pl';
+
+// Language data
+const languageData = {
+    pl: {
+        flag: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjEyIiBmaWxsPSIjZmZmZmZmIi8+CjxyZWN0IHk9IjEyIiB3aWR0aD0iMjQiIGhlaWdodD0iMTIiIGZpbGw9IiNkYzE0M2MiLz4KPC9zdmc+',
+        code: 'PL',
+        name: 'Polski'
+    },
+    en: {
+        flag: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiBmaWxsPSIjMDEyMTY5Ii8+CjxwYXRoIGQ9Ik0wIDBoMjR2MmgtMjRWMHptMCA0aDI0djJIMFY0em0wIDRoMjR2MkgwVjh6bTAgNGgyNHYySDBWMTJ6bTAgNGgyNHYySDBWMTZ6bTAgNGgyNHYySDBWMjB6IiBmaWxsPSIjZmZmZmZmIi8+CjxwYXRoIGQ9Ik0wIDBoMjR2MkgwVjB6bTAgNGgyNHYySDBWNHptMCA0aDI0djJIMFY4em0wIDRoMjR2MkgwVjEyem0wIDRoMjR2MkgwVjE2em0wIDRoMjR2MkgwVjIweiIgZmlsbD0iI2ZmZmZmZiIvPgo8L3N2Zz4=',
+        code: 'EN',
+        name: 'English'
+    },
+    nl: {
+        flag: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjgiIGZpbGw9IiNhZTFjMjgiLz4KPHJlY3QgeT0iOCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjgiIGZpbGw9IiNmZmZmZmYiLz4KPHJlY3QgeT0iMTYiIHdpZHRoPSIyNCIgaGVpZ2h0PSI4IiBmaWxsPSIjMjE0NjhiIi8+Cjwvc3ZnPg==',
+        code: 'NL',
+        name: 'Nederlands'
+    }
+};
+
+// Toggle dropdown
+if (languageButton && languageOptions) {
+    languageButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        languageButton.classList.toggle('active');
+        languageOptions.classList.toggle('show');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', () => {
+        languageButton.classList.remove('active');
+        languageOptions.classList.remove('show');
+    });
+
+    // Handle language selection
+    languageOptionItems.forEach(option => {
+        option.addEventListener('click', (e) => {
+            e.stopPropagation();
+            
+            // Remove active class from all options
+            languageOptionItems.forEach(opt => opt.classList.remove('active'));
+            
+            // Add active class to selected option
+            option.classList.add('active');
+            
+            // Update current language
+            const selectedLang = option.dataset.lang;
+            currentLanguage = selectedLang;
+            
+            // Update button display
+            updateLanguageButton(selectedLang);
+            
+            // Update translations
+            updateLanguage(selectedLang);
+            
+            // Close dropdown
+            languageButton.classList.remove('active');
+            languageOptions.classList.remove('show');
+            
+            // Store preference
+            localStorage.setItem('preferredLanguage', selectedLang);
+        });
+    });
+}
+
+// Update language button display
+function updateLanguageButton(lang) {
+    const flagImg = languageButton.querySelector('.flag-icon');
+    const langCode = languageButton.querySelector('.lang-code');
+    
+    if (flagImg && langCode && languageData[lang]) {
+        flagImg.src = languageData[lang].flag;
+        langCode.textContent = languageData[lang].code;
+    }
+}
 
 // Language translations
 const translations = {

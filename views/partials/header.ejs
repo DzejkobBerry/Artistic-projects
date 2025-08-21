@@ -46,24 +46,34 @@
             </ul>
             
             <div class="nav-actions">
-                <!-- Language Switcher -->
+                <!-- Language Switcher - Dropdown Version -->
                 <div class="language-switcher">
-                    <div class="language-toggle">
-                        <div class="language-slider">
+                    <div class="language-dropdown">
+                        <button class="language-current" id="languageButton">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjEyIiBmaWxsPSIjZmZmZmZmIi8+CjxyZWN0IHk9IjEyIiB3aWR0aD0iMjQiIGhlaWdodD0iMTIiIGZpbGw9IiNkYzE0M2MiLz4KPC9zdmc+" alt="Polski" class="flag-icon">
+                            <span class="lang-code">PL</span>
+                            <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        
+                        <div class="language-options" id="languageOptions">
                             <div class="language-option active" data-lang="pl">
                                 <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjEyIiBmaWxsPSIjZmZmZmZmIi8+CjxyZWN0IHk9IjEyIiB3aWR0aD0iMjQiIGhlaWdodD0iMTIiIGZpbGw9IiNkYzE0M2MiLz4KPC9zdmc+" alt="Polski" class="flag-icon">
+                                <span class="lang-text">Polski</span>
                                 <span class="lang-code">PL</span>
                             </div>
                             <div class="language-option" data-lang="en">
                                 <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiBmaWxsPSIjMDEyMTY5Ii8+CjxwYXRoIGQ9Ik0wIDBoMjR2MmgtMjRWMHptMCA0aDI0djJIMFY0em0wIDRoMjR2MkgwVjh6bTAgNGgyNHYySDBWMTJ6bTAgNGgyNHYySDBWMTZ6bTAgNGgyNHYySDBWMjB6IiBmaWxsPSIjZmZmZmZmIi8+CjxwYXRoIGQ9Ik0wIDBoMjR2MkgwVjB6bTAgNGgyNHYySDBWNHptMCA0aDI0djJIMFY4em0wIDRoMjR2MkgwVjEyem0wIDRoMjR2MkgwVjE2em0wIDRoMjR2MkgwVjIweiIgZmlsbD0iI2ZmZmZmZiIvPgo8L3N2Zz4=" alt="English" class="flag-icon">
+                                <span class="lang-text">English</span>
                                 <span class="lang-code">EN</span>
                             </div>
                             <div class="language-option" data-lang="nl">
                                 <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjgiIGZpbGw9IiNhZTFjMjgiLz4KPHJlY3QgeT0iOCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjgiIGZpbGw9IiNmZmZmZmYiLz4KPHJlY3QgeT0iMTYiIHdpZHRoPSIyNCIgaGVpZ2h0PSI4IiBmaWxsPSIjMjE0NjhiIi8+Cjwvc3ZnPg==" alt="Nederlands" class="flag-icon">
+                                <span class="lang-text">Nederlands</span>
                                 <span class="lang-code">NL</span>
                             </div>
                         </div>
-                        <div class="language-indicator"></div>
                     </div>
                 </div>
                 
