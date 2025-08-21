@@ -1,5 +1,84 @@
-<li class="nav-item">
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title || 'Artistic Projects - Profesjonalne Projekty Graficzne' %></title>
+    <meta name="description" content="Artistic Projects - Tworzymy niepowtarzalne projekty graficzne, logo, branding i materiały reklamowe. Profesjonalne usługi projektowe.">
+    <meta name="keywords" content="projekty graficzne, logo, branding, druk, design, grafika">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/">
+                    <span class="logo-artistic">Artistic</span>
+                    <span class="logo-projects">Projects</span>
+                </a>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="/" class="nav-link <%= currentPage === 'home' ? 'active' : '' %>">
+                        <span data-pl="Strona Główna" data-en="Home" data-nl="Startpagina">Strona Główna</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/about" class="nav-link <%= currentPage === 'about' ? 'active' : '' %>">
+                        <span data-pl="O Nas" data-en="About Us" data-nl="Over Ons">O Nas</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/services" class="nav-link <%= currentPage === 'services' ? 'active' : '' %>">
+                        <span data-pl="Usługi" data-en="Services" data-nl="Diensten">Usługi</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/portfolio" class="nav-link <%= currentPage === 'portfolio' ? 'active' : '' %>">
+                        <span data-pl="Portfolio" data-en="Portfolio" data-nl="Portfolio">Portfolio</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="#contact" class="nav-link <%= currentPage === 'contact' ? 'active' : '' %>">
                         <span data-pl="Kontakt" data-en="Contact" data-nl="Contact">Kontakt</span>
                     </a>
                 </li>
+            </ul>
+            
+            <div class="nav-actions">
+                <div class="language-dropdown">
+                    <button class="language-btn" id="languageBtn">
+                        <span class="flag-icon">🇵🇱</span>
+                        <span class="language-code">PL</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="language-options" id="languageOptions">
+                        <div class="language-option" data-lang="pl">
+                            <span class="flag-icon">🇵🇱</span>
+                            <span class="language-name">Polski</span>
+                        </div>
+                        <div class="language-option" data-lang="en">
+                            <span class="flag-icon">🇬🇧</span>
+                            <span class="language-name">English</span>
+                        </div>
+                        <div class="language-option" data-lang="nl">
+                            <span class="flag-icon">🇳🇱</span>
+                            <span class="language-name">Nederlands</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="#contact" class="get-started-btn">
+                    <span data-pl="Rozpocznij Projekt" data-en="Start Project" data-nl="Start Project">Rozpocznij Projekt</span>
+                </a>
+            </div>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
