@@ -129,3 +129,128 @@ window.addEventListener('scroll', () => {
         parallax.style.transform = `translateY(${speed}px)`;
     }
 });
+
+// Language Switcher Functionality
+const languageOptions = document.querySelectorAll('.language-option');
+const languageIndicator = document.querySelector('.language-indicator');
+let currentLanguage = 'pl';
+
+// Language translations
+const translations = {
+    pl: {
+        'Strona Główna': 'Strona Główna',
+        'O Nas': 'O Nas',
+        'Usługi': 'Usługi',
+        'Portfolio': 'Portfolio',
+        'Proces': 'Proces',
+        'Rozpocznij Projekt': 'Rozpocznij Projekt'
+    },
+    en: {
+        'Strona Główna': 'Home',
+        'O Nas': 'About Us',
+        'Usługi': 'Services',
+        'Portfolio': 'Portfolio',
+        'Proces': 'Process',
+        'Rozpocznij Projekt': 'Start Project'
+    },
+    nl: {
+        'Strona Główna': 'Startpagina',
+        'O Nas': 'Over Ons',
+        'Usługi': 'Diensten',
+        'Portfolio': 'Portfolio',
+        'Proces': 'Proces',
+        'Rozpocznij Projekt': 'Start Project'
+    }
+};
+
+// Initialize language switcher
+if (languageOptions.length > 0) {
+    languageOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            // Remove active class from all options
+            languageOptions.forEach(opt => opt.classList.remove('active'));
+            
+            // Add active class to clicked option
+            option.classList.add('active');
+            
+            // Update current language
+            currentLanguage = option.dataset.lang;
+            
+            // Update translations
+            updateLanguage(currentLanguage);
+            
+            // Add animation effect
+            option.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                option.style.transform = 'scale(1.05)';
+            }, 150);
+            
+            // Store language preference
+            localStorage.setItem('preferredLanguage', currentLanguage);
+        });
+    });
+}
+
+// Function to update language
+function updateLanguage(lang) {
+    const elementsToTranslate = document.querySelectorAll('[data-pl]');
+    
+    elementsToTranslate.forEach(element => {
+        const key = element.dataset.pl;
+        if (translations[lang] && translations[lang][key]) {
+            // Add fade effect
+            element.style.opacity = '0.5';
+            
+            setTimeout(() => {
+                element.textContent = translations[lang][key];
+                element.style.opacity = '1';
+            }, 150);
+        }
+    });
+    
+    // Update document language
+    document.documentElement.lang = lang;
+}
+
+// Load saved language preference
+window.addEventListener('load', () => {
+    const savedLanguage = localStorage.getItem('preferredLanguage');
+    if (savedLanguage && savedLanguage !== 'pl') {
+        const targetOption = document.querySelector(`[data-lang="${savedLanguage}"]`);
+        if (targetOption) {
+            languageOptions.forEach(opt => opt.classList.remove('active'));
+            targetOption.classList.add('active');
+            currentLanguage = savedLanguage;
+            updateLanguage(savedLanguage);
+        }
+    }
+});
+
+// Enhanced navbar scroll effect
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    const scrolled = window.scrollY > 50;
+    
+    if (scrolled) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+// Smooth language transition animation
+function animateLanguageChange() {
+    const navLinks = document.querySelectorAll('.nav-link span');
+    
+    navLinks.forEach((link, index) => {
+        setTimeout(() => {
+            link.style.transform = 'translateY(-10px)';
+            link.style.opacity = '0';
+            
+            setTimeout(() => {
+                link.style.transform = 'translateY(0)';
+                link.style.opacity = '1';
+            }, 200);
+        }, index * 50);
+    });
+}

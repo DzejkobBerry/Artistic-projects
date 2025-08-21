@@ -7,7 +7,7 @@
     <meta name="description" content="Artistic Projects - Profesjonalne usługi graficzne, druk na odzieży, grawerowanie laserowe, druk 3D i projektowanie graficzne w Polsce">
     <meta name="keywords" content="druk na koszulkach, projektowanie graficzne, grawerowanie laserowe, druk 3D, ulotki, wizytówki, naklejki">
     <link rel="stylesheet" href="/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar">
@@ -16,24 +16,63 @@
                 <span class="logo-artistic">Artistic</span>
                 <span class="logo-projects">Projects</span>
             </div>
+            
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="/" class="nav-link <%= currentPage === 'home' ? 'active' : '' %>">Strona Główna</a>
+                    <a href="/" class="nav-link <%= currentPage === 'home' ? 'active' : '' %>">
+                        <span data-pl="Strona Główna" data-en="Home" data-nl="Startpagina">Strona Główna</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/about" class="nav-link <%= currentPage === 'about' ? 'active' : '' %>">O Nas</a>
+                    <a href="/about" class="nav-link <%= currentPage === 'about' ? 'active' : '' %>">
+                        <span data-pl="O Nas" data-en="About Us" data-nl="Over Ons">O Nas</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/services" class="nav-link <%= currentPage === 'services' ? 'active' : '' %>">Usługi</a>
+                    <a href="/services" class="nav-link <%= currentPage === 'services' ? 'active' : '' %>">
+                        <span data-pl="Usługi" data-en="Services" data-nl="Diensten">Usługi</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/portfolio" class="nav-link <%= currentPage === 'portfolio' ? 'active' : '' %>">Portfolio</a>
+                    <a href="/portfolio" class="nav-link <%= currentPage === 'portfolio' ? 'active' : '' %>">
+                        <span data-pl="Portfolio" data-en="Portfolio" data-nl="Portfolio">Portfolio</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/process" class="nav-link <%= currentPage === 'process' ? 'active' : '' %>">Proces</a>
+                    <a href="/process" class="nav-link <%= currentPage === 'process' ? 'active' : '' %>">
+                        <span data-pl="Proces" data-en="Process" data-nl="Proces">Proces</span>
+                    </a>
                 </li>
             </ul>
-            <a href="#contact" class="get-started-btn">Rozpocznij Projekt</a>
+            
+            <div class="nav-actions">
+                <!-- Language Switcher -->
+                <div class="language-switcher">
+                    <div class="language-toggle">
+                        <div class="language-slider">
+                            <div class="language-option active" data-lang="pl">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjEyIiBmaWxsPSIjZmZmZmZmIi8+CjxyZWN0IHk9IjEyIiB3aWR0aD0iMjQiIGhlaWdodD0iMTIiIGZpbGw9IiNkYzE0M2MiLz4KPC9zdmc+" alt="Polski" class="flag-icon">
+                                <span class="lang-code">PL</span>
+                            </div>
+                            <div class="language-option" data-lang="en">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiBmaWxsPSIjMDEyMTY5Ii8+CjxwYXRoIGQ9Ik0wIDBoMjR2MmgtMjRWMHptMCA0aDI0djJIMFY0em0wIDRoMjR2MkgwVjh6bTAgNGgyNHYySDBWMTJ6bTAgNGgyNHYySDBWMTZ6bTAgNGgyNHYySDBWMjB6IiBmaWxsPSIjZmZmZmZmIi8+CjxwYXRoIGQ9Ik0wIDBoMjR2MkgwVjB6bTAgNGgyNHYySDBWNHptMCA0aDI0djJIMFY4em0wIDRoMjR2MkgwVjEyem0wIDRoMjR2MkgwVjE2em0wIDRoMjR2MkgwVjIweiIgZmlsbD0iI2ZmZmZmZiIvPgo8L3N2Zz4=" alt="English" class="flag-icon">
+                                <span class="lang-code">EN</span>
+                            </div>
+                            <div class="language-option" data-lang="nl">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjgiIGZpbGw9IiNhZTFjMjgiLz4KPHJlY3QgeT0iOCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjgiIGZpbGw9IiNmZmZmZmYiLz4KPHJlY3QgeT0iMTYiIHdpZHRoPSIyNCIgaGVpZ2h0PSI4IiBmaWxsPSIjMjE0NjhiIi8+Cjwvc3ZnPg==" alt="Nederlands" class="flag-icon">
+                                <span class="lang-code">NL</span>
+                            </div>
+                        </div>
+                        <div class="language-indicator"></div>
+                    </div>
+                </div>
+                
+                <a href="#contact" class="get-started-btn">
+                    <span data-pl="Rozpocznij Projekt" data-en="Start Project" data-nl="Start Project">Rozpocznij Projekt</span>
+                    <div class="btn-glow"></div>
+                </a>
+            </div>
+            
             <div class="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
