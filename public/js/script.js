@@ -131,32 +131,20 @@ window.addEventListener('scroll', () => {
 });
 
 // Language Switcher Dropdown Functionality
-const languageButton = document.getElementById('languageButton');
+const languageButton = document.getElementById('languageBtn'); // Zmienione z 'languageButton'
 const languageOptions = document.getElementById('languageOptions');
 const languageOptionItems = document.querySelectorAll('.language-option');
 let currentLanguage = 'pl';
 
 // Language data
 const languageData = {
-    pl: {
-        flag: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjEyIiBmaWxsPSIjZmZmZmZmIi8+CjxyZWN0IHk9IjEyIiB3aWR0aD0iMjQiIGhlaWdodD0iMTIiIGZpbGw9IiNkYzE0M2MiLz4KPC9zdmc+',
-        code: 'PL',
-        name: 'Polski'
-    },
-    en: {
-        flag: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiBmaWxsPSIjMDEyMTY5Ii8+CjxwYXRoIGQ9Ik0wIDBoMjR2MmgtMjRWMHptMCA0aDI0djJIMFY0em0wIDRoMjR2MkgwVjh6bTAgNGgyNHYySDBWMTJ6bTAgNGgyNHYySDBWMTZ6bTAgNGgyNHYySDBWMjB6IiBmaWxsPSIjZmZmZmZmIi8+CjxwYXRoIGQ9Ik0wIDBoMjR2MkgwVjB6bTAgNGgyNHYySDBWNHptMCA0aDI0djJIMFY4em0wIDRoMjR2MkgwVjEyem0wIDRoMjR2MkgwVjEyem0wIDRoMjR2MkgwVjE2em0wIDRoMjR2MkgwVjIweiIgZmlsbD0iI2ZmZmZmZiIvPgo8L3N2Zz4=',
-        code: 'EN',
-        name: 'English'
-    },
-    nl: {
-        flag: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjgiIGZpbGw9IiNhZTFjMjgiLz4KPHJlY3QgeT0iOCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjgiIGZpbGw9IiNmZmZmZmYiLz4KPHJlY3QgeT0iMTYiIHdpZHRoPSIyNCIgaGVpZ2h0PSI4IiBmaWxsPSIjMjE0NjhiIi8+Cjwvc3ZnPg==',
-        code: 'NL',
-        name: 'Nederlands'
-    }
+    pl: { flag: '🇵🇱', code: 'PL', name: 'Polski' },
+    en: { flag: '🇬🇧', code: 'EN', name: 'English' },
+    nl: { flag: '🇳🇱', code: 'NL', name: 'Nederlands' }
 };
 
-// Toggle dropdown
 if (languageButton && languageOptions) {
+    // Toggle dropdown
     languageButton.addEventListener('click', (e) => {
         e.stopPropagation();
         languageButton.classList.toggle('active');
@@ -202,11 +190,11 @@ if (languageButton && languageOptions) {
 
 // Update language button display
 function updateLanguageButton(lang) {
-    const flagImg = languageButton.querySelector('.flag-icon');
-    const langCode = languageButton.querySelector('.lang-code');
+    const flagIcon = languageButton.querySelector('.flag-icon');
+    const langCode = languageButton.querySelector('.language-code');
     
-    if (flagImg && langCode && languageData[lang]) {
-        flagImg.src = languageData[lang].flag;
+    if (flagIcon && langCode && languageData[lang]) {
+        flagIcon.textContent = languageData[lang].flag;
         langCode.textContent = languageData[lang].code;
     }
 }
