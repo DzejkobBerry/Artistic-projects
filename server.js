@@ -58,3 +58,6 @@ app.get('/process', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server działa na porcie ${PORT}`);
 });
+
+// Export dla Vercel
+module.exports = app;
