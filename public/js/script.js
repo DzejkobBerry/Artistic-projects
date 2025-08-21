@@ -283,11 +283,17 @@ window.addEventListener('load', () => {
     if (savedLanguage && savedLanguage !== 'pl') {
         const targetOption = document.querySelector(`[data-lang="${savedLanguage}"]`);
         if (targetOption) {
-            languageOptions.forEach(opt => opt.classList.remove('active'));
+            // POPRAWKA: użyj languageOptionItems zamiast languageOptions
+            languageOptionItems.forEach(opt => opt.classList.remove('active'));
             targetOption.classList.add('active');
             currentLanguage = savedLanguage;
             updateLanguage(savedLanguage);
+            // DODAJ: aktualizuj przycisk języka
+            updateLanguageButton(savedLanguage);
         }
+    } else {
+        // DODAJ: inicjalizuj domyślny język polski
+        updateLanguageButton('pl');
     }
 });
 
