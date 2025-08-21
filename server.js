@@ -39,12 +39,13 @@ app.get('/portfolio', (req, res) => {
     });
 });
 
-app.get('/process', (req, res) => {
-    res.render('process', {
-        title: 'Our Process - Artistic Projects',
-        currentPage: 'process'
-    });
-});
+// Usuń lub zakomentuj ten blok:
+// app.get('/process', (req, res) => {
+//     res.render('process', {
+//         title: 'Our Process - Artistic Projects',
+//         currentPage: 'process'
+//     });
+// });
 
 // Remove this entire block:
 // app.get('/contact', (req, res) => {

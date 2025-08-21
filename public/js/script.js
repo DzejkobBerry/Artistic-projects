@@ -144,7 +144,7 @@ const languageData = {
         name: 'Polski'
     },
     en: {
-        flag: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiBmaWxsPSIjMDEyMTY5Ii8+CjxwYXRoIGQ9Ik0wIDBoMjR2MmgtMjRWMHptMCA0aDI0djJIMFY0em0wIDRoMjR2MkgwVjh6bTAgNGgyNHYySDBWMTJ6bTAgNGgyNHYySDBWMTZ6bTAgNGgyNHYySDBWMjB6IiBmaWxsPSIjZmZmZmZmIi8+CjxwYXRoIGQ9Ik0wIDBoMjR2MkgwVjB6bTAgNGgyNHYySDBWNHptMCA0aDI0djJIMFY4em0wIDRoMjR2MkgwVjEyem0wIDRoMjR2MkgwVjE2em0wIDRoMjR2MkgwVjIweiIgZmlsbD0iI2ZmZmZmZiIvPgo8L3N2Zz4=',
+        flag: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiBmaWxsPSIjMDEyMTY5Ii8+CjxwYXRoIGQ9Ik0wIDBoMjR2MmgtMjRWMHptMCA0aDI0djJIMFY0em0wIDRoMjR2MkgwVjh6bTAgNGgyNHYySDBWMTJ6bTAgNGgyNHYySDBWMTZ6bTAgNGgyNHYySDBWMjB6IiBmaWxsPSIjZmZmZmZmIi8+CjxwYXRoIGQ9Ik0wIDBoMjR2MkgwVjB6bTAgNGgyNHYySDBWNHptMCA0aDI0djJIMFY4em0wIDRoMjR2MkgwVjEyem0wIDRoMjR2MkgwVjEyem0wIDRoMjR2MkgwVjE2em0wIDRoMjR2MkgwVjIweiIgZmlsbD0iI2ZmZmZmZiIvPgo8L3N2Zz4=',
         code: 'EN',
         name: 'English'
     },
@@ -218,7 +218,7 @@ const translations = {
         'O Nas': 'O Nas',
         'Usługi': 'Usługi',
         'Portfolio': 'Portfolio',
-        'Proces': 'Proces',
+        'Kontakt': 'Kontakt',
         'Rozpocznij Projekt': 'Rozpocznij Projekt'
     },
     en: {
@@ -226,7 +226,7 @@ const translations = {
         'O Nas': 'About Us',
         'Usługi': 'Services',
         'Portfolio': 'Portfolio',
-        'Proces': 'Process',
+        'Kontakt': 'Contact',
         'Rozpocznij Projekt': 'Start Project'
     },
     nl: {
@@ -234,7 +234,7 @@ const translations = {
         'O Nas': 'Over Ons',
         'Usługi': 'Diensten',
         'Portfolio': 'Portfolio',
-        'Proces': 'Proces',
+        'Kontakt': 'Contact',
         'Rozpocznij Projekt': 'Start Project'
     }
 };
