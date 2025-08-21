@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-artistic">Artistic</span>
+                <span class="logo-projects">Projects</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="/" class="nav-link <%= currentPage === 'home' ? 'active' : '' %>">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/about" class="nav-link <%= currentPage === 'about' ? 'active' : '' %>">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/services" class="nav-link <%= currentPage === 'services' ? 'active' : '' %>">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/portfolio" class="nav-link <%= currentPage === 'portfolio' ? 'active' : '' %>">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/process" class="nav-link <%= currentPage === 'process' ? 'active' : '' %>">Process</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/contact" class="nav-link <%= currentPage === 'contact' ? 'active' : '' %>">Contact</a>
+                </li>
+            </ul>
+            <a href="#contact" class="get-started-btn">Get Started</a>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>

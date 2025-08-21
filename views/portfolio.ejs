@@ -1,0 +1,63 @@
+<%- include('partials/header') %>
+
+<main>
+    <section class="page-hero">
+        <div class="container">
+            <h1>Our Portfolio</h1>
+            <p>Explore our latest projects and creative works</p>
+        </div>
+    </section>
+
+    <section class="portfolio-filters">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="prints">Clothing Prints</button>
+                <button class="filter-btn" data-filter="graphics">Graphic Design</button>
+                <button class="filter-btn" data-filter="print-materials">Print Materials</button>
+                <button class="filter-btn" data-filter="3d">3D Printing</button>
+                <button class="filter-btn" data-filter="laser">Laser Engraving</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio-grid">
+        <div class="container">
+            <div class="portfolio-items">
+                <div class="portfolio-item" data-category="prints">
+                    <div class="portfolio-image">
+                        <img src="/images/portfolio/tshirt-1.jpg" alt="Custom T-shirt Design">
+                        <div class="portfolio-overlay">
+                            <h3>Custom T-shirt Design</h3>
+                            <p>Clothing Prints</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="graphics">
+                    <div class="portfolio-image">
+                        <img src="/images/portfolio/logo-1.jpg" alt="Brand Logo Design">
+                        <div class="portfolio-overlay">
+                            <h3>Brand Logo Design</h3>
+                            <p>Graphic Design</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="print-materials">
+                    <div class="portfolio-image">
+                        <img src="/images/portfolio/flyer-1.jpg" alt="Event Flyer">
+                        <div class="portfolio-overlay">
+                            <h3>Event Flyer</h3>
+                            <p>Print Materials</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Więcej elementów portfolio... -->
+            </div>
+        </div>
+    </section>
+</main>
+
+<%- include('partials/footer') %>
