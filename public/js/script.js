@@ -9,10 +9,12 @@ if (hamburger && navMenu) {
     });
 
     // Close menu when clicking on a link
-    document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-    }));
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
 }
 
 // Smooth scrolling for anchor links
@@ -29,27 +31,27 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar background on scroll
+// Navbar scroll effect
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(26, 26, 46, 0.98)';
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
     } else {
-        navbar.style.background = 'rgba(26, 26, 46, 0.95)';
+        navbar.classList.remove('scrolled');
     }
 });
 
-// Add loading animation
+// Loading animation
 window.addEventListener('load', () => {
-    const loading = document.getElementById('loading');
+    const loading = document.querySelector('.loading');
     if (loading) {
-        loading.classList.add('hidden');
-        // Opcjonalnie: całkowite usunięcie po animacji
         setTimeout(() => {
-            loading.style.display = 'none';
-        }, 500);
+            loading.classList.add('hidden');
+            setTimeout(() => {
+                loading.style.display = 'none';
+            }, 500);
+        }, 1000);
     }
-    document.body.classList.add('loaded');
 });
 
 // Intersection Observer for animations
@@ -71,16 +73,16 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.service-card, .stat-item').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
-    el.style.transition = 'all 0.6s ease';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(el);
 });
 
-// Interaktywne animacje tła hero
+// Hero parallax effect
 const hero = document.querySelector('.hero');
 const particles = document.querySelector('.particles');
 
 if (hero && particles) {
-    // Animacja ruchu myszy
+    // Mouse move parallax
     hero.addEventListener('mousemove', (e) => {
         const rect = hero.getBoundingClientRect();
         const x = (e.clientX - rect.left) / rect.width;
@@ -92,34 +94,32 @@ if (hero && particles) {
         particles.style.transform = `translate(${moveX}px, ${moveY}px)`;
     });
     
-    // Reset pozycji gdy mysz opuszcza hero
+    // Reset on mouse leave
     hero.addEventListener('mouseleave', () => {
         particles.style.transform = 'translate(0, 0)';
     });
 }
 
-// Animacje fade-in dla elementów hero
+// Hero elements animation
 const heroElements = document.querySelectorAll('.hero-title, .hero-subtitle, .hero-buttons');
 
 const heroObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
+    entries.forEach(entry => {
         if (entry.isIntersecting) {
-            setTimeout(() => {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }, index * 200);
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
         }
     });
 }, { threshold: 0.1 });
 
 heroElements.forEach(el => {
     el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'all 0.8s ease';
+    el.style.transform = 'translateY(50px)';
+    el.style.transition = 'opacity 1.2s ease, transform 1.2s ease';
     heroObserver.observe(el);
 });
 
-// Dodatkowe efekty przy scroll
+// Parallax scrolling effect
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const parallax = document.querySelector('.hero-background');
@@ -226,35 +226,6 @@ const translations = {
         'Rozpocznij Projekt': 'Start Project'
     }
 };
-
-// Initialize language switcher
-// USUŃ ten błędny kod (linie 231-256):
-// if (languageOptions.length > 0) {
-//     languageOptions.forEach(option => {
-//         option.addEventListener('click', () => {
-//             // Remove active class from all options
-//             languageOptions.forEach(opt => opt.classList.remove('active'));
-//             
-//             // Add active class to clicked option
-//             option.classList.add('active');
-//             
-//             // Update current language
-//             currentLanguage = option.dataset.lang;
-//             
-//             // Update translations
-//             updateLanguage(currentLanguage);
-//             
-//             // Add animation effect
-//             option.style.transform = 'scale(1.1)';
-//             setTimeout(() => {
-//                 option.style.transform = 'scale(1.05)';
-//             }, 150);
-//             
-//             // Store language preference
-//             localStorage.setItem('preferredLanguage', currentLanguage);
-//         });
-//     });
-// }
 
 // Function to update language
 function updateLanguage(lang) {
