@@ -131,7 +131,7 @@ window.addEventListener('scroll', () => {
 });
 
 // Language Switcher Dropdown Functionality
-const languageButton = document.getElementById('languageBtn'); // Zmienione z 'languageButton'
+const languageButton = document.getElementById('languageBtn');
 const languageOptions = document.getElementById('languageOptions');
 const languageOptionItems = document.querySelectorAll('.language-option');
 let currentLanguage = 'pl';
@@ -228,32 +228,33 @@ const translations = {
 };
 
 // Initialize language switcher
-if (languageOptions.length > 0) {
-    languageOptions.forEach(option => {
-        option.addEventListener('click', () => {
-            // Remove active class from all options
-            languageOptions.forEach(opt => opt.classList.remove('active'));
-            
-            // Add active class to clicked option
-            option.classList.add('active');
-            
-            // Update current language
-            currentLanguage = option.dataset.lang;
-            
-            // Update translations
-            updateLanguage(currentLanguage);
-            
-            // Add animation effect
-            option.style.transform = 'scale(1.1)';
-            setTimeout(() => {
-                option.style.transform = 'scale(1.05)';
-            }, 150);
-            
-            // Store language preference
-            localStorage.setItem('preferredLanguage', currentLanguage);
-        });
-    });
-}
+// USUŃ ten błędny kod (linie 231-256):
+// if (languageOptions.length > 0) {
+//     languageOptions.forEach(option => {
+//         option.addEventListener('click', () => {
+//             // Remove active class from all options
+//             languageOptions.forEach(opt => opt.classList.remove('active'));
+//             
+//             // Add active class to clicked option
+//             option.classList.add('active');
+//             
+//             // Update current language
+//             currentLanguage = option.dataset.lang;
+//             
+//             // Update translations
+//             updateLanguage(currentLanguage);
+//             
+//             // Add animation effect
+//             option.style.transform = 'scale(1.1)';
+//             setTimeout(() => {
+//                 option.style.transform = 'scale(1.05)';
+//             }, 150);
+//             
+//             // Store language preference
+//             localStorage.setItem('preferredLanguage', currentLanguage);
+//         });
+//     });
+// }
 
 // Function to update language
 function updateLanguage(lang) {
