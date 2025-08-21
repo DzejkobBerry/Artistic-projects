@@ -829,23 +829,13 @@ body {
 .title-line-1 {
     display: block;
     animation: slideInLeft 1.2s ease 0.5s forwards;
-    background: linear-gradient(45deg, #fff, #ff6b9d, #fff);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: slideInLeft 1.2s ease 0.5s forwards, shimmer 3s ease-in-out 2s infinite;
+    color: white;
 }
 
 .title-line-2 {
     display: block;
     animation: slideInRight 1.2s ease 0.8s forwards;
-    background: linear-gradient(45deg, #4ecdc4, #fff, #9c88ff);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: slideInRight 1.2s ease 0.8s forwards, shimmer 3s ease-in-out 2.5s infinite;
+    color: white;
 }
 
 @keyframes slideInLeft {
