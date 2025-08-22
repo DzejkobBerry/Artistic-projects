@@ -898,7 +898,7 @@ body {
 
 @keyframes expandLine {
     to {
-        width: 350px;
+        width: 750px;
     }
 }
 
@@ -1428,7 +1428,7 @@ body {
 /* Sekcja O nas */
 /* About Section - Nowoczesny design */
 .about-section {
-    padding: 6rem 2rem;
+    padding: 3rem 2rem;
     background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%);
     position: relative;
     overflow: hidden;
@@ -1462,22 +1462,22 @@ body {
 .about-content {
     display: flex;
     flex-direction: column;
-    gap: 6rem;
+    gap: 3rem;
     margin: 0 auto;
     max-width: 1600px;
     position: relative;
     z-index: 1;
-    padding: 5rem 3rem;
+    padding: 2rem 3rem;
 }
 
 /* Główna sekcja: logo po lewej, informacje po prawej */
 .about-main-section {
     display: grid;
     grid-template-columns: 400px 1fr;
-    gap: 6rem;
+    gap: 4rem;
     align-items: center;
     padding: 0;
-    margin-bottom: 6rem;
+    margin-bottom: 3rem;
     min-height: 500px;
 }
 
@@ -1734,7 +1734,7 @@ body {
 @media (max-width: 1200px) {
     .about-content {
         max-width: 1200px;
-        padding: 4rem 2rem;
+        padding: 2rem 2rem;
     }
     
     .about-main-section {
@@ -1788,13 +1788,13 @@ body {
 
 @media (max-width: 768px) {
     .about-content {
-        padding: 3rem 1.5rem;
-        gap: 4rem;
+        padding: 1.5rem 1.5rem;
+        gap: 2rem;
     }
     
     .about-main-section {
-        gap: 3rem;
-        margin-bottom: 4rem;
+        gap: 2rem;
+        margin-bottom: 2rem;
     }
     
     .about-logo-container {
@@ -1832,7 +1832,7 @@ body {
 
 @media (max-width: 480px) {
     .about-content {
-        padding: 2rem 1rem;
+        padding: 1rem 1rem;
     }
     
     .company-name {
@@ -1965,7 +1965,7 @@ body {
 
 @media (max-width: 768px) {
     .about-section {
-        padding: 4rem 0;
+        padding: 2rem 0;
     }
     
     .about-main-section {
@@ -2022,7 +2022,7 @@ body {
 
 @media (max-width: 480px) {
     .about-main-section {
-        padding: 2rem 1.5rem;
+        padding: 1rem 1.5rem;
     }
     
     .about-logo {
