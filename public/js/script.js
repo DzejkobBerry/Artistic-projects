@@ -138,9 +138,21 @@ let currentLanguage = 'pl';
 
 // Language data
 const languageData = {
-    pl: { flag: '🇵🇱', code: 'PL', name: 'Polski' },
-    en: { flag: '🇬🇧', code: 'EN', name: 'English' },
-    nl: { flag: '🇳🇱', code: 'NL', name: 'Nederlands' }
+    pl: { 
+        flag: '<svg viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="16" fill="#FFFFFF"/><rect width="24" height="8" fill="#DC143C"/></svg>', 
+        code: 'PL', 
+        name: 'Polski' 
+    },
+    en: { 
+        flag: '<svg viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="16" fill="#012169"/><path d="M0 0L24 16M24 0L0 16" stroke="#FFFFFF" stroke-width="1.6"/><path d="M0 0L24 16M24 0L0 16" stroke="#C8102E" stroke-width="1"/><path d="M12 0V16M0 8H24" stroke="#FFFFFF" stroke-width="2.7"/><path d="M12 0V16M0 8H24" stroke="#C8102E" stroke-width="1.6"/></svg>', 
+        code: 'EN', 
+        name: 'English' 
+    },
+    nl: { 
+        flag: '<svg viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="16" fill="#21468B"/><rect width="24" height="10.67" fill="#FFFFFF"/><rect width="24" height="5.33" fill="#AE1C28"/></svg>', 
+        code: 'NL', 
+        name: 'Nederlands' 
+    }
 };
 
 if (languageButton && languageOptions) {
@@ -194,7 +206,7 @@ function updateLanguageButton(lang) {
     const langCode = languageButton.querySelector('.language-code');
     
     if (flagIcon && langCode && languageData[lang]) {
-        flagIcon.textContent = languageData[lang].flag;
+        flagIcon.innerHTML = languageData[lang].flag;
         langCode.textContent = languageData[lang].code;
     }
 }
