@@ -288,6 +288,15 @@ body {
     border-radius: 3px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     flex-shrink: 0;
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Android Emoji", "EmojiSymbols", "EmojiOne Mozilla", "Twemoji Mozilla", "Segoe UI Symbol", sans-serif;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    text-rendering: optimizeQuality;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .lang-text {
@@ -461,6 +470,7 @@ body {
     .flag-icon {
         width: 16px;
         height: 16px;
+        font-size: 14px;
     }
 
     .get-started-btn {
@@ -494,6 +504,7 @@ body {
     .flag-icon {
         width: 14px;
         height: 14px;
+        font-size: 12px;
     }
     
     .lang-code {
