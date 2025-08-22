@@ -550,6 +550,18 @@ body {
     z-index: 1;
 }
 
+/* Hero video background */
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    object-fit: cover;
+    opacity: 0.8;
+}
+
 /* Gradient overlay for depth */
 .gradient-overlay {
     position: absolute;
@@ -560,7 +572,7 @@ body {
     background: radial-gradient(circle at 30% 70%, rgba(255, 107, 157, 0.3) 0%, transparent 50%),
                 radial-gradient(circle at 70% 30%, rgba(78, 205, 196, 0.3) 0%, transparent 50%);
     animation: overlayShift 15s ease-in-out infinite;
-    z-index: 2;
+    z-index: 3;
 }
 
 @keyframes overlayShift {
@@ -575,7 +587,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 2;
+    z-index: 4;
     pointer-events: none;
 }
 
@@ -678,7 +690,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 2;
+    z-index: 4;
     pointer-events: none;
 }
 
@@ -774,7 +786,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 2;
+    z-index: 4;
     pointer-events: none;
 }
 
@@ -824,7 +836,7 @@ body {
 /* Enhanced hero content */
 .hero-content {
     position: relative;
-    z-index: 3;
+    z-index: 10;
     text-align: center;
     color: white;
     max-width: 1000px;
