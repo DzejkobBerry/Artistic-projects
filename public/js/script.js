@@ -138,10 +138,26 @@ let currentLanguage = 'pl';
 
 // Language data
 const languageData = {
-    pl: { flag: '🇵🇱', code: 'PL', name: 'Polski' },
-    en: { flag: '🇬🇧', code: 'EN', name: 'English' },
-    nl: { flag: '🇳🇱', code: 'NL', name: 'Nederlands' }
+    pl: { flag: '/images/flags/pl.svg', code: 'PL', name: 'Polski' },
+    en: { flag: '/images/flags/gb.svg', code: 'EN', name: 'English' },
+    nl: { flag: '/images/flags/nl.svg', code: 'NL', name: 'Nederlands' }
 };
+
+// Ensure flag display with SVG images
+function ensureFlagDisplay() {
+    document.querySelectorAll('.flag-icon').forEach(flag => {
+        if (flag.tagName !== 'IMG') {
+            const lang = flag.closest('[data-lang]')?.dataset.lang || 'pl';
+            if (languageData[lang]) {
+                const imgElement = document.createElement('img');
+                imgElement.src = languageData[lang].flag;
+                imgElement.alt = languageData[lang].code;
+                imgElement.className = 'flag-icon';
+                flag.parentNode.replaceChild(imgElement, flag);
+            }
+        }
+    });
+}
 
 if (languageButton && languageOptions) {
     // Toggle dropdown
@@ -194,7 +210,18 @@ function updateLanguageButton(lang) {
     const langCode = languageButton.querySelector('.language-code');
     
     if (flagIcon && langCode && languageData[lang]) {
-        flagIcon.textContent = languageData[lang].flag;
+        // Update flag image
+        if (flagIcon.tagName === 'IMG') {
+            flagIcon.src = languageData[lang].flag;
+            flagIcon.alt = languageData[lang].code;
+        } else {
+            // Replace text element with img element
+            const imgElement = document.createElement('img');
+            imgElement.src = languageData[lang].flag;
+            imgElement.alt = languageData[lang].code;
+            imgElement.className = 'flag-icon';
+            flagIcon.parentNode.replaceChild(imgElement, flagIcon);
+        }
         langCode.textContent = languageData[lang].code;
     }
 }
@@ -247,6 +274,16 @@ function updateLanguage(lang) {
     // Update document language
     document.documentElement.lang = lang;
 }
+
+// Initialize language on DOM content loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Ensure language button is initialized
+    if (languageButton) {
+        updateLanguageButton('pl');
+    }
+    // Ensure all flags are displayed correctly
+    ensureFlagDisplay();
+});
 
 // Load saved language preference
 window.addEventListener('load', () => {
