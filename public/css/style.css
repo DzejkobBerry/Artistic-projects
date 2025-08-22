@@ -2175,10 +2175,10 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 20% 50%, rgba(255, 107, 157, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(78, 205, 196, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(255, 193, 7, 0.03) 0%, transparent 50%);
-    animation: float 15s ease-in-out infinite;
+    background: radial-gradient(circle at 20% 50%, rgba(255, 107, 157, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(78, 205, 196, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(255, 193, 7, 0.12) 0%, transparent 50%);
+    animation: floatingGradients 20s ease-in-out infinite;
 }
 
 .services-section::after {
@@ -2188,8 +2188,9 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23ff6b9d" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>') repeat;
-    opacity: 0.3;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23ff6b9d" opacity="0.15"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>') repeat;
+    opacity: 0.6;
+    animation: movePattern 30s linear infinite;
 }
 
 .services-grid {
@@ -2269,10 +2270,11 @@ body {
 }
 
 .service-card.modern:hover {
-    transform: translateY(-3px) scale(1.01);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1),
-                0 0 0 1px rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.12);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12),
+                0 5px 15px rgba(255, 107, 157, 0.1);
+    border-color: rgba(255, 107, 157, 0.15);
+    animation: cardFloat 3s ease-in-out infinite;
 }
 
 .service-icon-wrapper {
@@ -2323,8 +2325,9 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     transition: left 0.4s ease;
+    animation: iconShimmer 4s ease-in-out infinite;
 }
 
 .service-card.modern:hover .service-icon::before {
@@ -3639,5 +3642,59 @@ select:focus {
     
     .hero {
         page-break-after: always;
+    }
+}
+
+/* Animacje dla sekcji usług */
+@keyframes floatingGradients {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg) scale(1);
+    }
+    25% {
+        transform: translateY(-15px) rotate(1deg) scale(1.02);
+    }
+    50% {
+        transform: translateY(-25px) rotate(0deg) scale(1.05);
+    }
+    75% {
+        transform: translateY(-10px) rotate(-1deg) scale(1.02);
+    }
+}
+
+@keyframes movePattern {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    25% {
+        transform: translateX(-10px) translateY(-5px);
+    }
+    50% {
+        transform: translateX(-20px) translateY(-10px);
+    }
+    75% {
+        transform: translateX(-10px) translateY(-5px);
+    }
+    100% {
+        transform: translateX(0) translateY(0);
+    }
+}
+
+@keyframes cardFloat {
+    0%, 100% {
+        transform: translateY(-8px) scale(1.02);
+    }
+    50% {
+        transform: translateY(-12px) scale(1.025);
+    }
+}
+
+@keyframes iconShimmer {
+    0%, 100% {
+        left: -100%;
+        opacity: 0;
+    }
+    50% {
+        left: 100%;
+        opacity: 1;
     }
 }
