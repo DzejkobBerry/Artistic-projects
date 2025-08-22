@@ -1095,17 +1095,18 @@ body {
 
 /* Animated scroll down indicator */
 .scroll-down-indicator {
-    position: absolute;
-    bottom: 3.5rem;
-    left: 50%;
-    transform: translateX(-50%) scale(1.3);
+    position: relative;
+    margin-top: 3rem;
+    transform: scale(1.3);
     transform-origin: center center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: auto;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
     opacity: 0;
     animation: fadeInUp 1.2s ease 2.7s forwards;
     cursor: pointer;
