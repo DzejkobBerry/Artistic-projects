@@ -1460,6 +1460,20 @@ body {
     letter-spacing: -1px;
 }
 
+.section-title-underline {
+    width: 0;
+    height: 4px;
+    background: var(--gradient-1);
+    margin: 0 auto 1rem;
+    border-radius: 2px;
+    box-shadow: 0 0 20px rgba(255, 107, 157, 0.5);
+    transition: width 2s ease;
+}
+
+.section-title-underline.animate {
+    width: 200px;
+}
+
 .section-subtitle {
     font-size: 1.2rem;
     color: var(--text-light);
@@ -1663,28 +1677,7 @@ body {
     position: relative;
 }
 
-.title-decoration {
-    width: 80px;
-    height: 4px;
-    background: var(--gradient-1);
-    margin: 20px 0;
-    border-radius: 2px;
-    position: relative;
-}
 
-.title-decoration::after {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: var(--gradient-1);
-    border-radius: 4px;
-    filter: blur(8px);
-    opacity: 0.3;
-    z-index: -1;
-}
 
 .about-headline {
     font-size: 2.8rem;

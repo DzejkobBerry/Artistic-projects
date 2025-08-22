@@ -382,3 +382,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Section title underline animation on scroll
+document.addEventListener('DOMContentLoaded', function() {
+    const sectionUnderlines = document.querySelectorAll('.section-title-underline');
+    
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+            }
+        });
+    }, observerOptions);
+    
+    sectionUnderlines.forEach(underline => {
+        observer.observe(underline);
+    });
+});
