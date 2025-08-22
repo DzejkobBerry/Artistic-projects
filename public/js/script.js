@@ -402,3 +402,208 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Add smooth scroll behavior for better UX
 document.documentElement.style.scrollBehavior = 'smooth';
+
+// Gallery Modal Functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const openGalleryBtn = document.getElementById('openGalleryModal');
+    const galleryModal = document.getElementById('galleryModal');
+    const closeGalleryBtn = document.getElementById('closeGalleryModal');
+    const projectModal = document.getElementById('projectModal');
+    const closeProjectBtn = document.getElementById('closeProjectModal');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const projectThumbnails = document.querySelectorAll('.project-thumbnail');
+    
+    // Project data for different projects
+    const projectData = {
+        'tech-startup': {
+            title: 'Logo "TechStart"',
+            description: 'Minimalistyczne logo dla startupu technologicznego z nowoczesnymi elementami. Projekt obejmuje pełną identyfikację wizualną z logo, wizytówkami i papeterią firmową.',
+            tags: ['Logo Design', 'Tech', 'Startup']
+        },
+        'restaurant-smakow': {
+             title: 'Logo Restauracji "Smaków"',
+             description: 'Eleganckie logo dla restauracji z tradycyjnymi smakami. Projekt łączy klasyczne elementy kulinarne z nowoczesnym designem, podkreślając autentyczność i jakość potraw.',
+             tags: ['Logo Design', 'Restaurant', 'Traditional']
+         },
+         'fitness-powergym': {
+             title: 'Logo Fitness "PowerGym"',
+             description: 'Dynamiczne logo dla siłowni i centrum fitness. Projekt charakteryzuje się energetycznymi elementami graficznymi, które motywują do aktywności fizycznej i podkreślają siłę marki.',
+             tags: ['Logo Design', 'Fitness', 'Sport']
+         },
+        'ecolife-brand': {
+            title: 'Branding "EcoLife"',
+            description: 'Kompleksowy branding dla firmy ekologicznej. Projekt obejmuje logo, wizytówki, papeterię, oraz materiały marketingowe. Wykorzystano naturalne kolory i organiczne kształty.',
+            tags: ['Branding', 'Eco', 'Nature']
+        },
+        'luxury-spa': {
+            title: 'Branding "Luxury Spa"',
+            description: 'Elegancka identyfikacja wizualna dla ekskluzywnego spa i wellness. Projekt podkreśla luksusowy charakter marki poprzez wyrafinowane elementy graficzne i premium kolorystykę.',
+            tags: ['Branding', 'Luxury', 'Spa']
+        },
+        'business-cards': {
+            title: 'Wizytówki Premium',
+            description: 'Eleganckie wizytówki biznesowe wykonane na wysokiej jakości papierze. Projekt łączy klasyczną elegancję z nowoczesnymi elementami graficznymi. Dostępne w różnych wariantach kolorystycznych.',
+            tags: ['Print Design', 'Business Cards', 'Premium']
+        },
+        'brochure-design': {
+             title: 'Broszura Informacyjna',
+             description: 'Profesjonalne materiały drukowane dla centrum medycznego. Projekt charakteryzuje się przejrzystym layoutem, czytelną typografią i profesjonalną prezentacją informacji medycznych.',
+             tags: ['Print Design', 'Brochure', 'Medical']
+         },
+         'creative-studio': {
+             title: 'Branding "Creative Studio"',
+             description: 'Kreatywna identyfikacja dla studia projektowego z artystycznymi elementami. Projekt łączy nowoczesność z kreatywnością, tworząc unikalną tożsamość wizualną.',
+             tags: ['Branding', 'Creative', 'Studio']
+         },
+         'furniture-catalog': {
+             title: 'Katalog "Meble Design"',
+             description: 'Profesjonalny katalog produktów dla firmy meblarskiej z eleganckimi zdjęciami. Projekt charakteryzuje się wysoką jakością prezentacji produktów i przejrzystym układem.',
+             tags: ['Print Design', 'Katalog', 'Furniture']
+         },
+         'festival-flyers': {
+             title: 'Ulotki "Summer Festival"',
+             description: 'Kolorowe ulotki promocyjne dla festiwalu muzycznego z żywymi grafikami. Projekt przyciąga uwagę dynamicznymi elementami i energetyczną kolorystyką.',
+             tags: ['Print Design', 'Event', 'Festival']
+         }
+    };
+    
+    // Open gallery modal
+    if (openGalleryBtn) {
+        openGalleryBtn.addEventListener('click', () => {
+            galleryModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+    
+    // Close gallery modal
+    if (closeGalleryBtn) {
+        closeGalleryBtn.addEventListener('click', () => {
+            galleryModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        });
+    }
+    
+    // Close project modal
+    if (closeProjectBtn) {
+        closeProjectBtn.addEventListener('click', () => {
+            projectModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        });
+    }
+    
+    // Close modals when clicking outside
+    [galleryModal, projectModal].forEach(modal => {
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+    });
+    
+    // Close modals with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            if (galleryModal.classList.contains('show')) {
+                galleryModal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+            if (projectModal.classList.contains('show')) {
+                projectModal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        }
+    });
+    
+    // Handle gallery item clicks
+    galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const projectId = item.dataset.project;
+            const project = projectData[projectId];
+            
+            if (project) {
+                // Update project modal content
+                document.getElementById('projectModalTitle').textContent = project.title;
+                document.getElementById('projectInfoTitle').textContent = project.title;
+                document.getElementById('projectInfoDescription').textContent = project.description;
+                
+                // Update tags
+                const tagsContainer = document.getElementById('projectInfoTags');
+                tagsContainer.innerHTML = '';
+                project.tags.forEach(tag => {
+                    const tagElement = document.createElement('span');
+                    tagElement.className = 'tag';
+                    tagElement.textContent = tag;
+                    tagsContainer.appendChild(tagElement);
+                });
+                
+                // Close gallery modal and open project modal
+                galleryModal.classList.remove('show');
+                setTimeout(() => {
+                    projectModal.classList.add('show');
+                }, 300);
+            }
+        });
+    });
+    
+    // Handle project thumbnail clicks
+    projectThumbnails.forEach((thumbnail, index) => {
+        thumbnail.addEventListener('click', () => {
+            // Remove active class from all thumbnails
+            projectThumbnails.forEach(thumb => thumb.classList.remove('active'));
+            // Add active class to clicked thumbnail
+            thumbnail.classList.add('active');
+            
+            // Here you could update the main image based on the thumbnail
+            // For now, we'll just show the selection
+        });
+    });
+    
+    // Add click handlers to existing portfolio items for direct access
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    portfolioItems.forEach(item => {
+        item.addEventListener('click', () => {
+            // Get category and create a project ID based on the title
+            const category = item.dataset.category;
+            const title = item.querySelector('.portfolio-overlay h4')?.textContent;
+            
+            // Map existing portfolio items to project data
+            let projectId = null;
+            if (title?.includes('TechStart') || title?.includes('Tech Startup')) projectId = 'tech-startup';
+            else if (title?.includes('Smaków')) projectId = 'restaurant-smakow';
+            else if (title?.includes('PowerGym')) projectId = 'fitness-powergym';
+            else if (title?.includes('EcoLife')) projectId = 'ecolife-brand';
+            else if (title?.includes('Luxury Spa')) projectId = 'luxury-spa';
+            else if (title?.includes('Creative Studio')) projectId = 'creative-studio';
+            else if (title?.includes('Katalog') || title?.includes('Meble')) projectId = 'furniture-catalog';
+            else if (title?.includes('Ulotki') || title?.includes('Festival')) projectId = 'festival-flyers';
+            else if (title?.includes('Broszura') || title?.includes('Medical')) projectId = 'brochure-design';
+            else if (title?.includes('Wizytówki') || title?.includes('Business')) projectId = 'business-cards';
+            
+            if (projectId && projectData[projectId]) {
+                const project = projectData[projectId];
+                
+                // Update project modal content
+                document.getElementById('projectModalTitle').textContent = project.title;
+                document.getElementById('projectInfoTitle').textContent = project.title;
+                document.getElementById('projectInfoDescription').textContent = project.description;
+                
+                // Update tags
+                const tagsContainer = document.getElementById('projectInfoTags');
+                tagsContainer.innerHTML = '';
+                project.tags.forEach(tag => {
+                    const tagElement = document.createElement('span');
+                    tagElement.className = 'tag';
+                    tagElement.textContent = tag;
+                    tagsContainer.appendChild(tagElement);
+                });
+                
+                // Open project modal
+                projectModal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+});
