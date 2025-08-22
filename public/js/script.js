@@ -333,3 +333,52 @@ function animateLanguageChange() {
         }, index * 50);
     });
 }
+
+// Rotating hero subtitle text
+function initRotatingText() {
+    const rotatingElement = document.getElementById('rotatingText');
+    if (!rotatingElement) return;
+    
+    const messages = [
+        'Tworzymy niepowtarzalne projekty graficzne, które <span class="subtitle-emphasis">wyróżniają Twoją markę</span>',
+        'Twój partner w tworzeniu <span class="subtitle-emphasis">innowacyjnych rozwiązań cyfrowych</span>',
+        'Wykorzystujemy najnowsze technologie, aby pomóc Ci <span class="subtitle-emphasis">osiągnąć sukces</span>',
+        'Doświadczeni specjaliści gotowi do <span class="subtitle-emphasis">realizacji Twoich projektów</span>'
+    ];
+    
+    let currentIndex = 0;
+    
+    function changeText() {
+        rotatingElement.style.opacity = '0';
+        
+        setTimeout(() => {
+            currentIndex = (currentIndex + 1) % messages.length;
+            rotatingElement.innerHTML = messages[currentIndex];
+            rotatingElement.style.opacity = '1';
+        }, 500);
+    }
+    
+    // Start rotation after initial animation completes
+    setTimeout(() => {
+        setInterval(changeText, 3000);
+    }, 3000);
+}
+
+// Initialize rotating text when DOM is loaded
+document.addEventListener('DOMContentLoaded', initRotatingText);
+
+// Scroll indicator functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', function() {
+            const aboutSection = document.querySelector('#about');
+            if (aboutSection) {
+                aboutSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    }
+});
