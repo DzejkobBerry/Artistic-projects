@@ -2657,7 +2657,7 @@ body {
 
 /* Sekcja Proces */
 .process-section {
-    padding: 8rem 0;
+    padding: 8rem 0 4rem 0;
     background: var(--bg-light);
 }
 
@@ -2750,7 +2750,7 @@ body {
 
 /* Sekcja Portfolio */
 .portfolio-section {
-    padding: 8rem 0;
+    padding: 4rem 0 8rem 0;
     background: var(--white);
 }
 
