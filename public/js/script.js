@@ -356,5 +356,49 @@ window.addEventListener('load', () => {
     }
 });
 
+// Counter animation for statistics
+function animateCounter(element, target, duration = 2000) {
+    const start = 0;
+    const increment = target / (duration / 16); // 60 FPS
+    let current = start;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        element.textContent = Math.floor(current);
+    }, 16);
+}
+
+// Initialize counter animations when stats come into view
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const statNumber = entry.target.querySelector('.stat-number');
+            if (statNumber && statNumber.dataset.target) {
+                const target = parseInt(statNumber.dataset.target);
+                // Add a small delay for better visual effect
+                setTimeout(() => {
+                    animateCounter(statNumber, target);
+                }, 200);
+                // Unobserve after animation starts to prevent re-triggering
+                statsObserver.unobserve(entry.target);
+            }
+        }
+    });
+}, {
+    threshold: 0.5,
+    rootMargin: '0px 0px -100px 0px'
+});
+
+// Observe all stat items for counter animation
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.stat-item').forEach(item => {
+        statsObserver.observe(item);
+    });
+});
+
 // Add smooth scroll behavior for better UX
 document.documentElement.style.scrollBehavior = 'smooth';
