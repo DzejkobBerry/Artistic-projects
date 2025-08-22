@@ -403,6 +403,30 @@ document.addEventListener('DOMContentLoaded', () => {
 // Add smooth scroll behavior for better UX
 document.documentElement.style.scrollBehavior = 'smooth';
 
+// Scroll to Top Button functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    
+    if (scrollToTopBtn) {
+        // Show/hide button based on scroll position
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+        });
+        
+        // Scroll to top when button is clicked
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+});
+
 // Gallery Modal Functionality
 document.addEventListener('DOMContentLoaded', () => {
     const openGalleryBtn = document.getElementById('openGalleryModal');
