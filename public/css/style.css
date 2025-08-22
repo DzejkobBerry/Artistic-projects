@@ -1177,21 +1177,21 @@ body {
 
 /* Hover effects */
 .scroll-down-indicator:hover .scroll-text {
-    color: var(--primary-pink);
-    text-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .scroll-down-indicator:hover .mouse-body {
-    border-color: var(--primary-pink);
-    box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
+    border-color: white;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
 .scroll-down-indicator:hover .mouse-wheel {
-    background: var(--primary-pink);
+    background: white;
 }
 
 .scroll-down-indicator:hover .arrow {
-    border-top-color: var(--primary-pink);
+    border-top-color: white;
 }
 
 /* Animations */
@@ -1556,7 +1556,7 @@ body {
 /* Główna sekcja: logo po lewej, informacje po prawej */
 .about-main-section {
     display: grid;
-    grid-template-columns: 400px 1fr;
+    grid-template-columns: 440px 1fr;
     gap: 4rem;
     align-items: center;
     padding: 0;
@@ -1579,8 +1579,8 @@ body {
 .about-logo-container {
     position: relative;
     flex-shrink: 0;
-    width: 320px;
-    height: 320px;
+    width: 400px;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1602,6 +1602,7 @@ body {
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     z-index: 2;
+    cursor: pointer;
 }
 
 .about-logo:hover {
@@ -1610,6 +1611,33 @@ body {
                 0 15px 35px rgba(78, 205, 196, 0.15),
                 0 0 0 10px rgba(255, 107, 157, 0.06),
                 inset 0 0 0 2px rgba(255, 255, 255, 1);
+    filter: brightness(0.8);
+}
+
+.about-logo-container::after {
+    content: 'Więcej o Nas';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 3;
+    pointer-events: none;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.about-logo-container:hover::after {
+    opacity: 1;
+    visibility: visible;
 }
 
 .logo-glow {
@@ -1821,18 +1849,18 @@ body {
     }
     
     .about-main-section {
-        grid-template-columns: 350px 1fr;
+        grid-template-columns: 400px 1fr;
         gap: 4rem;
     }
     
     .about-logo-container {
-        width: 280px;
-        height: 280px;
+        width: 360px;
+        height: 360px;
     }
     
     .about-logo {
-        width: 240px;
-        height: 240px;
+        width: 300px;
+        height: 300px;
     }
     
     .company-name {
@@ -1849,14 +1877,14 @@ body {
     }
     
     .about-logo-container {
-        width: 250px;
-        height: 250px;
+        width: 280px;
+        height: 280px;
         margin: 0 auto;
     }
     
     .about-logo {
-        width: 220px;
-        height: 220px;
+        width: 250px;
+        height: 250px;
     }
     
     .features-grid {
@@ -1881,13 +1909,13 @@ body {
     }
     
     .about-logo-container {
-        width: 200px;
-        height: 200px;
+        width: 230px;
+        height: 230px;
     }
     
     .about-logo {
-        width: 180px;
-        height: 180px;
+        width: 200px;
+        height: 200px;
     }
     
     .company-name {
@@ -1924,13 +1952,13 @@ body {
     }
     
     .about-logo-container {
-        width: 180px;
-        height: 180px;
+        width: 200px;
+        height: 200px;
     }
     
     .about-logo {
-        width: 160px;
-        height: 160px;
+        width: 180px;
+        height: 180px;
     }
     
     .feature-item {
