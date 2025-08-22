@@ -138,26 +138,10 @@ let currentLanguage = 'pl';
 
 // Language data
 const languageData = {
-    pl: { flag: '/images/flags/pl.svg', code: 'PL', name: 'Polski' },
-    en: { flag: '/images/flags/gb.svg', code: 'EN', name: 'English' },
-    nl: { flag: '/images/flags/nl.svg', code: 'NL', name: 'Nederlands' }
+    pl: { flag: '🇵🇱', code: 'PL', name: 'Polski' },
+    en: { flag: '🇬🇧', code: 'EN', name: 'English' },
+    nl: { flag: '🇳🇱', code: 'NL', name: 'Nederlands' }
 };
-
-// Ensure flag display with SVG images
-function ensureFlagDisplay() {
-    document.querySelectorAll('.flag-icon').forEach(flag => {
-        if (flag.tagName !== 'IMG') {
-            const lang = flag.closest('[data-lang]')?.dataset.lang || 'pl';
-            if (languageData[lang]) {
-                const imgElement = document.createElement('img');
-                imgElement.src = languageData[lang].flag;
-                imgElement.alt = languageData[lang].code;
-                imgElement.className = 'flag-icon';
-                flag.parentNode.replaceChild(imgElement, flag);
-            }
-        }
-    });
-}
 
 if (languageButton && languageOptions) {
     // Toggle dropdown
@@ -210,18 +194,7 @@ function updateLanguageButton(lang) {
     const langCode = languageButton.querySelector('.language-code');
     
     if (flagIcon && langCode && languageData[lang]) {
-        // Update flag image
-        if (flagIcon.tagName === 'IMG') {
-            flagIcon.src = languageData[lang].flag;
-            flagIcon.alt = languageData[lang].code;
-        } else {
-            // Replace text element with img element
-            const imgElement = document.createElement('img');
-            imgElement.src = languageData[lang].flag;
-            imgElement.alt = languageData[lang].code;
-            imgElement.className = 'flag-icon';
-            flagIcon.parentNode.replaceChild(imgElement, flagIcon);
-        }
+        flagIcon.textContent = languageData[lang].flag;
         langCode.textContent = languageData[lang].code;
     }
 }
@@ -275,16 +248,6 @@ function updateLanguage(lang) {
     document.documentElement.lang = lang;
 }
 
-// Initialize language on DOM content loaded
-document.addEventListener('DOMContentLoaded', () => {
-    // Ensure language button is initialized
-    if (languageButton) {
-        updateLanguageButton('pl');
-    }
-    // Ensure all flags are displayed correctly
-    ensureFlagDisplay();
-});
-
 // Load saved language preference
 window.addEventListener('load', () => {
     const savedLanguage = localStorage.getItem('preferredLanguage');
@@ -333,74 +296,3 @@ function animateLanguageChange() {
         }, index * 50);
     });
 }
-
-// Rotating hero subtitle text
-function initRotatingText() {
-    const rotatingElement = document.getElementById('rotatingText');
-    if (!rotatingElement) return;
-    
-    const messages = [
-        'Tworzymy niepowtarzalne projekty graficzne, które <span class="subtitle-emphasis">wyróżniają Twoją markę</span>',
-        'Twój partner w tworzeniu <span class="subtitle-emphasis">innowacyjnych rozwiązań cyfrowych</span>',
-        'Wykorzystujemy najnowsze technologie, aby pomóc Ci <span class="subtitle-emphasis">osiągnąć sukces</span>',
-        'Doświadczeni specjaliści gotowi do <span class="subtitle-emphasis">realizacji Twoich projektów</span>'
-    ];
-    
-    let currentIndex = 0;
-    
-    function changeText() {
-        rotatingElement.style.opacity = '0';
-        
-        setTimeout(() => {
-            currentIndex = (currentIndex + 1) % messages.length;
-            rotatingElement.innerHTML = messages[currentIndex];
-            rotatingElement.style.opacity = '1';
-        }, 500);
-    }
-    
-    // Start rotation after initial animation completes
-    setTimeout(() => {
-        setInterval(changeText, 3000);
-    }, 3000);
-}
-
-// Initialize rotating text when DOM is loaded
-document.addEventListener('DOMContentLoaded', initRotatingText);
-
-// Scroll indicator functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', function() {
-            const aboutSection = document.querySelector('#about');
-            if (aboutSection) {
-                aboutSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    }
-});
-
-// Section title underline animation on scroll
-document.addEventListener('DOMContentLoaded', function() {
-    const sectionUnderlines = document.querySelectorAll('.section-title-underline');
-    
-    const observerOptions = {
-        threshold: 0.5,
-        rootMargin: '0px 0px -100px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-            }
-        });
-    }, observerOptions);
-    
-    sectionUnderlines.forEach(underline => {
-        observer.observe(underline);
-    });
-});
