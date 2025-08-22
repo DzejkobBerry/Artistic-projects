@@ -834,6 +834,9 @@
 
     <!-- Contact Section -->
     <section class="contact-section" id="contact">
+        <div class="contact-bg-element"></div>
+        <div class="contact-bg-element"></div>
+        <div class="contact-bg-element"></div>
         <div class="container">
             <div class="section-header">
                 <div class="section-title-wrapper">
@@ -902,20 +905,20 @@
                     <form id="contactForm">
                         <div class="form-group">
                             <label for="name">Imię i nazwisko *</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name" placeholder="np. Jan Kowalski" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" placeholder="np. jan.kowalski@email.com" required>
                         </div>
                         <div class="form-group">
                             <label for="phone">Telefon</label>
-                            <input type="tel" id="phone" name="phone">
+                            <input type="tel" id="phone" name="phone" placeholder="np. +48 123 456 789">
                         </div>
                         <div class="form-group">
                             <label for="service">Rodzaj usługi *</label>
                             <select id="service" name="service" required>
-                                <option value="">Wybierz usługę</option>
+                                <option value="">Wybierz rodzaj usługi...</option>
                                 <option value="logo">Projektowanie Logo</option>
                                 <option value="branding">Identyfikacja Wizualna</option>
                                 <option value="print">Materiały Reklamowe</option>
@@ -928,7 +931,7 @@
                         <div class="form-group">
                             <label for="budget">Budżet</label>
                             <select id="budget" name="budget">
-                                <option value="">Wybierz przedział</option>
+                                <option value="">Wybierz przedział budżetu...</option>
                                 <option value="500-1000">500 - 1000 zł</option>
                                 <option value="1000-2500">1000 - 2500 zł</option>
                                 <option value="2500-5000">2500 - 5000 zł</option>
@@ -937,19 +940,19 @@
                         </div>
                         <div class="form-group">
                             <label for="message">Opis projektu *</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Opisz swój projekt, wymagania i oczekiwania..." required></textarea>
+                            <textarea id="message" name="message" rows="5" placeholder="Opisz szczegółowo swój projekt, wymagania, oczekiwania, inspiracje i wszelkie dodatkowe informacje, które pomogą nam lepiej zrozumieć Twoją wizję..." required></textarea>
                         </div>
-                        <div class="form-group checkbox-group">
-                            <label class="checkbox-label">
+                        <div class="form-group toggle-group">
+                            <label class="toggle-label">
                                 <input type="checkbox" id="privacy" name="privacy" required>
-                                <span class="checkmark"></span>
+                                <span class="toggle-slider"></span>
                                 Akceptuję <a href="#">politykę prywatności</a> *
                             </label>
                         </div>
-                        <div class="form-group checkbox-group">
-                            <label class="checkbox-label">
+                        <div class="form-group toggle-group">
+                            <label class="toggle-label">
                                 <input type="checkbox" id="newsletter" name="newsletter">
-                                <span class="checkmark"></span>
+                                <span class="toggle-slider"></span>
                                 Chcę otrzymywać newsletter z nowościami
                             </label>
                         </div>
