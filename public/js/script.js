@@ -308,3 +308,53 @@ function animateLanguageChange() {
         }, index * 50);
     });
 }
+
+// Rotating text functionality
+function initRotatingText() {
+    const textItems = document.querySelectorAll('.text-item');
+    let currentIndex = 0;
+    
+    if (textItems.length === 0) return;
+    
+    function rotateText() {
+        // Remove active class from current item
+        textItems[currentIndex].classList.remove('active');
+        textItems[currentIndex].classList.add('fade-out');
+        
+        // Move to next item
+        currentIndex = (currentIndex + 1) % textItems.length;
+        
+        // Add active class to next item after a short delay
+        setTimeout(() => {
+            textItems.forEach(item => item.classList.remove('fade-out'));
+            textItems[currentIndex].classList.add('active');
+        }, 400);
+    }
+    
+    // Start rotation after initial delay
+    setTimeout(() => {
+        setInterval(rotateText, 4000); // Change text every 4 seconds
+    }, 3000); // Wait 3 seconds before starting rotation
+}
+
+// Initialize rotating text when page loads
+window.addEventListener('load', () => {
+    setTimeout(initRotatingText, 2000); // Start after hero animations
+    
+    // Initialize scroll down indicator functionality
+    const scrollDownIndicator = document.querySelector('.scroll-down-indicator');
+    if (scrollDownIndicator) {
+        scrollDownIndicator.addEventListener('click', () => {
+            const aboutSection = document.querySelector('#about');
+            if (aboutSection) {
+                aboutSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    }
+});
+
+// Add smooth scroll behavior for better UX
+document.documentElement.style.scrollBehavior = 'smooth';
