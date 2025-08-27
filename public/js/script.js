@@ -442,7 +442,109 @@ function animatePercentage(element, start, end, duration) {
 // Initialize progress animation when page loads
 window.addEventListener('load', () => {
     setTimeout(initProgressAnimation, 500);
+    
+    // Initialize newsletter modal
+    initNewsletterModal();
 });
+
+// Newsletter Modal Functions
+function initNewsletterModal() {
+    const modal = document.getElementById('newsletterModal');
+    const openBtn = document.getElementById('openNewsletterModal');
+    const closeBtn = document.querySelector('.newsletter-close');
+    const form = document.getElementById('newsletterForm');
+    
+    if (!modal || !openBtn) return;
+    
+    // Open modal
+    openBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+        
+        // Focus first input after animation
+        setTimeout(() => {
+            const firstInput = modal.querySelector('input[type="text"], input[type="email"]');
+            if (firstInput) firstInput.focus();
+        }, 400);
+    });
+    
+    // Close modal
+    function closeModal() {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+        
+        // Reset form after close animation
+        setTimeout(() => {
+            if (form) form.reset();
+            const submitBtn = form?.querySelector('.btn-submit');
+            if (submitBtn) {
+                submitBtn.classList.remove('loading');
+            }
+        }, 300);
+    }
+    
+    // Close button click
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+    }
+    
+    // Click outside modal to close
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+    
+    // ESC key to close
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('show')) {
+            closeModal();
+        }
+    });
+    
+    // Form submission
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = form.querySelector('.btn-submit');
+            const formData = new FormData(form);
+            
+            // Show loading state
+            submitBtn.classList.add('loading');
+            
+            // Simulate form submission (replace with actual endpoint)
+            setTimeout(() => {
+                // Success feedback
+                const modalBody = modal.querySelector('.newsletter-modal-body');
+                modalBody.innerHTML = `
+                    <div class="newsletter-icon">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                    </div>
+                    <h4 style="color: #2d3748; margin-bottom: 1rem; font-size: 1.4rem;">Dziękujemy!</h4>
+                    <p style="color: #4a5568; font-size: 1.1rem; line-height: 1.6;">Twoja rejestracja została pomyślnie wysłana. Skontaktujemy się z Tobą wkrótce z aktualizacjami o naszych projektach.</p>
+                    <button onclick="document.getElementById('newsletterModal').classList.remove('show'); document.body.style.overflow = '';" 
+                            style="margin-top: 2rem; padding: 1rem 2rem; background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 50%, #ff6b9d 100%); color: white; border: none; border-radius: 12px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;"
+                            onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(255, 107, 157, 0.4)';" 
+                            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                        Zamknij
+                    </button>
+                `;
+                
+                // Auto close after 5 seconds
+                setTimeout(() => {
+                    if (modal.classList.contains('show')) {
+                        closeModal();
+                    }
+                }, 5000);
+                
+            }, 2000); // Simulate 2 second processing time
+        });
+    }
+}
 
 // Scroll to Top Button functionality
 document.addEventListener('DOMContentLoaded', () => {
