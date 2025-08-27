@@ -403,6 +403,47 @@ document.addEventListener('DOMContentLoaded', () => {
 // Add smooth scroll behavior for better UX
 document.documentElement.style.scrollBehavior = 'smooth';
 
+// Progress percentage animation
+function initProgressAnimation() {
+    const progressPercentage = document.querySelector('.progress-percentage');
+    if (!progressPercentage) return;
+    
+    // Set initial value to 0%
+    progressPercentage.textContent = '0%';
+    
+    // Start animation after delay (matching CSS animation)
+    setTimeout(() => {
+        animatePercentage(progressPercentage, 0, 87, 2500);
+    }, 1200);
+}
+
+function animatePercentage(element, start, end, duration) {
+    const startTime = performance.now();
+    const range = end - start;
+    
+    function updatePercentage(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing function (cubic-bezier equivalent)
+        const easeProgress = 1 - Math.pow(1 - progress, 3);
+        
+        const currentValue = Math.round(start + (range * easeProgress));
+        element.textContent = currentValue + '%';
+        
+        if (progress < 1) {
+            requestAnimationFrame(updatePercentage);
+        }
+    }
+    
+    requestAnimationFrame(updatePercentage);
+}
+
+// Initialize progress animation when page loads
+window.addEventListener('load', () => {
+    setTimeout(initProgressAnimation, 500);
+});
+
 // Scroll to Top Button functionality
 document.addEventListener('DOMContentLoaded', () => {
     const scrollToTopBtn = document.getElementById('scrollToTop');

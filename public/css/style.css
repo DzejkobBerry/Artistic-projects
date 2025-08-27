@@ -5372,6 +5372,18 @@ select:focus {
     background: #ffffff;
     position: relative;
     overflow: hidden;
+    animation: sectionFadeIn 1.2s ease-out;
+}
+
+@keyframes sectionFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .coming-soon-section::before {
@@ -5486,6 +5498,18 @@ select:focus {
     text-align: center;
     max-width: 1000px;
     margin: 0 auto;
+    animation: contentSlideUp 1.5s ease-out 0.3s both;
+}
+
+@keyframes contentSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .coming-soon-icon {
@@ -5524,10 +5548,32 @@ select:focus {
     color: #2d3748;
     margin-bottom: 1rem;
     text-shadow: 0 2px 10px rgba(255, 107, 157, 0.2);
-    background: linear-gradient(135deg, #e91e63, #ff6b9d);
+    background: linear-gradient(135deg, #e91e63, #ff6b9d, #ff9800, #e91e63);
+    background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: titleGradientShift 4s ease-in-out infinite, titlePulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes titlePulse {
+    0% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+    100% {
+        transform: scale(1.02);
+        filter: brightness(1.1);
+    }
 }
 
 .coming-soon-subtitle {
@@ -5545,6 +5591,34 @@ select:focus {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 107, 157, 0.2);
     box-shadow: 0 8px 32px rgba(255, 107, 157, 0.1);
+    animation: progressContainerFloat 3s ease-in-out infinite, progressFadeIn 1.8s ease-out 0.6s both;
+    transition: all 0.3s ease;
+}
+
+.progress-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 45px rgba(255, 107, 157, 0.2);
+    border-color: rgba(255, 107, 157, 0.4);
+}
+
+@keyframes progressContainerFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes progressFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .progress-info {
@@ -5565,6 +5639,19 @@ select:focus {
     font-weight: 700;
     color: #4ade80;
     text-shadow: 0 0 20px rgba(74, 222, 128, 0.5);
+    opacity: 0;
+    animation: percentageFadeIn 0.5s ease-out 1.2s forwards;
+}
+
+@keyframes percentageFadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .progress-bar {
@@ -5579,11 +5666,57 @@ select:focus {
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #4ade80, #22c55e);
+    background: linear-gradient(90deg, #4ade80, #22c55e, #16a34a, #4ade80);
+    background-size: 200% 100%;
     border-radius: 10px;
-    width: 87%;
+    width: 0%;
     position: relative;
-    animation: progressGlow 2s ease-in-out infinite alternate;
+    animation: progressFillAnimation 2.5s cubic-bezier(0.4, 0, 0.2, 1) 1.2s forwards, progressGlow 2s ease-in-out infinite alternate 3.7s, progressShimmerNew 3s ease-in-out infinite 3.7s;
+    box-shadow: 0 2px 8px rgba(74, 222, 128, 0.3);
+    transition: all 0.1s ease;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 0 10px 10px 0;
+    animation: progressIndicator 2.5s cubic-bezier(0.4, 0, 0.2, 1) 1.2s forwards;
+    opacity: 0;
+}
+
+@keyframes progressIndicator {
+    0% {
+        opacity: 0;
+    }
+    10%, 90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}
+
+@keyframes progressFillAnimation {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 87%;
+    }
+}
+
+@keyframes progressShimmerNew {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 .progress-glow {
@@ -5627,18 +5760,52 @@ select:focus {
     border: 1px solid rgba(255, 107, 157, 0.15);
     transition: all 0.3s ease;
     box-shadow: 0 4px 20px rgba(255, 107, 157, 0.08);
+    animation: featureSlideIn 1.5s ease-out both;
+    animation-delay: calc(var(--item-index, 0) * 0.2s);
+}
+
+.features-preview .feature-item:nth-child(1) { --item-index: 1; }
+.features-preview .feature-item:nth-child(2) { --item-index: 2; }
+.features-preview .feature-item:nth-child(3) { --item-index: 3; }
+
+@keyframes featureSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .features-preview .feature-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px) scale(1.02);
     background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 8px 30px rgba(255, 107, 157, 0.15);
+    box-shadow: 0 15px 40px rgba(255, 107, 157, 0.2);
+    border-color: rgba(255, 107, 157, 0.3);
 }
 
 .features-preview .feature-icon {
     font-size: 2.5rem;
     margin-bottom: 1rem;
     display: block;
+    animation: iconBounce 2s ease-in-out infinite;
+    transition: all 0.3s ease;
+}
+
+.features-preview .feature-item:hover .feature-icon {
+    transform: scale(1.1) rotate(5deg);
+    animation-play-state: paused;
+}
+
+@keyframes iconBounce {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
 }
 
 .features-preview .feature-item h4 {
@@ -5662,6 +5829,34 @@ select:focus {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 107, 157, 0.2);
     box-shadow: 0 8px 32px rgba(255, 107, 157, 0.1);
+    animation: ctaSlideUp 1.8s ease-out 1s both, ctaFloat 4s ease-in-out infinite 2.8s;
+    transition: all 0.3s ease;
+}
+
+.coming-soon-cta:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 20px 50px rgba(255, 107, 157, 0.2);
+    border-color: rgba(255, 107, 157, 0.4);
+}
+
+@keyframes ctaSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes ctaFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 .coming-soon-cta h3 {
@@ -5683,6 +5878,61 @@ select:focus {
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
+    animation: buttonsSlideUp 2s ease-out 1.5s both;
+}
+
+.cta-buttons .btn {
+    animation: buttonPulse 3s ease-in-out infinite;
+    animation-delay: calc(var(--btn-index, 0) * 0.3s);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-buttons .btn:nth-child(1) { --btn-index: 1; }
+.cta-buttons .btn:nth-child(2) { --btn-index: 2; }
+
+.cta-buttons .btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    animation-play-state: paused;
+}
+
+.cta-buttons .btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.6s ease;
+}
+
+.cta-buttons .btn:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+@keyframes buttonsSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes buttonPulse {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        box-shadow: 0 8px 25px rgba(255, 107, 157, 0.3);
+    }
 }
 
 .timeline-info {
@@ -5704,11 +5954,31 @@ select:focus {
     border: 1px solid rgba(255, 107, 157, 0.15);
     transition: all 0.3s ease;
     box-shadow: 0 4px 20px rgba(255, 107, 157, 0.08);
+    animation: timelineSlideIn 1.5s ease-out both;
+    animation-delay: calc(var(--timeline-index, 0) * 0.15s);
+}
+
+.timeline-item:nth-child(1) { --timeline-index: 1; }
+.timeline-item:nth-child(2) { --timeline-index: 2; }
+.timeline-item:nth-child(3) { --timeline-index: 3; }
+.timeline-item:nth-child(4) { --timeline-index: 4; }
+
+@keyframes timelineSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
 }
 
 .timeline-item:hover {
     background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 8px 30px rgba(255, 107, 157, 0.15);
+    box-shadow: 0 12px 35px rgba(255, 107, 157, 0.2);
+    transform: translateY(-5px) scale(1.02);
+    border-color: rgba(255, 107, 157, 0.3);
 }
 
 .timeline-icon {
@@ -5727,6 +5997,18 @@ select:focus {
     background: #4ade80;
     color: white;
     box-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
+    animation: completedPulse 2s ease-in-out infinite;
+}
+
+@keyframes completedPulse {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(74, 222, 128, 0.8);
+        transform: scale(1.05);
+    }
 }
 
 .timeline-icon.active {
