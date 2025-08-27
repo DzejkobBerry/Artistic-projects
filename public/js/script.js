@@ -403,6 +403,135 @@ document.addEventListener('DOMContentLoaded', () => {
 // Add smooth scroll behavior for better UX
 document.documentElement.style.scrollBehavior = 'smooth';
 
+// Timeline slider controls
+document.addEventListener('DOMContentLoaded', () => {
+    const timelineInfo = document.querySelector('.timeline-info');
+    
+    if (timelineInfo) {
+        const timelineItems = timelineInfo.querySelectorAll('.timeline-item');
+        let currentIndex = 0;
+        
+        // Create slider controls
+        const sliderContainer = document.createElement('div');
+        sliderContainer.className = 'timeline-slider-controls';
+        
+        // Previous button
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'timeline-nav-btn timeline-prev';
+        prevBtn.innerHTML = '‹';
+        prevBtn.setAttribute('aria-label', 'Poprzednia karta');
+        
+        // Next button
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'timeline-nav-btn timeline-next';
+        nextBtn.innerHTML = '›';
+        nextBtn.setAttribute('aria-label', 'Następna karta');
+        
+        // Dots indicator
+        const dotsContainer = document.createElement('div');
+        dotsContainer.className = 'timeline-dots';
+        
+        // Create dots
+        timelineItems.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.className = 'timeline-dot';
+            if (index === 0) dot.classList.add('active');
+            dot.setAttribute('aria-label', `Przejdź do karty ${index + 1}`);
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+        
+        sliderContainer.appendChild(prevBtn);
+        sliderContainer.appendChild(dotsContainer);
+        sliderContainer.appendChild(nextBtn);
+        
+        // Insert controls after timeline
+        timelineInfo.parentNode.insertBefore(sliderContainer, timelineInfo.nextSibling);
+        
+        function updateSlider() {
+             const itemWidth = timelineItems[0].offsetWidth + parseInt(getComputedStyle(timelineInfo).gap);
+             const scrollPosition = currentIndex * itemWidth;
+             
+             timelineInfo.scrollTo({
+                 left: scrollPosition,
+                 behavior: 'auto'
+             });
+            
+            // Update dots
+            document.querySelectorAll('.timeline-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+            
+            // Update button states
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex === timelineItems.length - 1;
+        }
+        
+        function goToSlide(index) {
+            currentIndex = Math.max(0, Math.min(index, timelineItems.length - 1));
+            updateSlider();
+        }
+        
+        function nextSlide() {
+            if (currentIndex < timelineItems.length - 1) {
+                currentIndex++;
+                updateSlider();
+            }
+        }
+        
+        function prevSlide() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlider();
+            }
+        }
+        
+        // Event listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        // Keyboard navigation
+        timelineInfo.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                nextSlide();
+            }
+        });
+        
+        // Initial setup
+        updateSlider();
+        
+        // Auto-advance slider (optional)
+        let autoAdvanceInterval;
+        
+        function startAutoAdvance() {
+            autoAdvanceInterval = setInterval(() => {
+                if (currentIndex < timelineItems.length - 1) {
+                    nextSlide();
+                } else {
+                    goToSlide(0); // Loop back to start
+                }
+            }, 2500); // Change slide every 2.5 seconds
+        }
+        
+        function stopAutoAdvance() {
+            clearInterval(autoAdvanceInterval);
+        }
+        
+        // Start auto-advance
+        startAutoAdvance();
+        
+        // Pause auto-advance on hover
+        timelineInfo.addEventListener('mouseenter', stopAutoAdvance);
+        timelineInfo.addEventListener('mouseleave', startAutoAdvance);
+        sliderContainer.addEventListener('mouseenter', stopAutoAdvance);
+        sliderContainer.addEventListener('mouseleave', startAutoAdvance);
+    }
+});
+
 // Progress percentage animation
 function initProgressAnimation() {
     const progressPercentage = document.querySelector('.progress-percentage');
