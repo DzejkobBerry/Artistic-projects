@@ -1,14 +1,112 @@
 <%- include('partials/header') %>
 
+<!-- Loading Animation -->
+<div class="loading" id="loading">
+    <div class="spinner"></div>
+</div>
+
 <main>
-    <section class="page-hero">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <!-- Background video -->
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="/images/other/hero.mp4" type="video/mp4">
+            </video>
+            
+            <!-- Animated gradient overlay -->
+            <div class="gradient-overlay"></div>
+            
+            <!-- Enhanced particles system -->
+            <div class="particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+        </div>
+        
         <div class="container">
-            <h1>Współpraca</h1>
-            <p>Razem tworzymy wyjątkowe projekty</p>
+            <div class="hero-content">
+                <!-- Enhanced title with typing effect -->
+                <div class="hero-title-wrapper">
+                    <h1 class="hero-title">
+                        <span class="title-line-1">WSPÓŁPRACA</span>
+                        <span class="title-line-2">Z NAMI</span>
+                    </h1>
+                    <div class="title-underline"></div>
+                </div>
+                
+                <!-- Enhanced subtitle -->
+                <p class="hero-subtitle">
+                    <span class="rotating-text" id="rotatingText">
+                        <span class="text-item active">Razem tworzymy wyjątkowe projekty,<br>które <span class="subtitle-emphasis">wyróżniają Twoją markę</span></span>
+                        <span class="text-item">Twój partner w realizacji<br><span class="subtitle-emphasis">kreatywnych wizji</span></span>
+                        <span class="text-item">Profesjonalne podejście<br>i <span class="subtitle-emphasis">indywidualna obsługa</span></span>
+                        <span class="text-item">Doświadczony zespół<br>gotowy do <span class="subtitle-emphasis">współpracy z Tobą</span></span>
+                    </span>
+                </p>
+                
+                <!-- Enhanced buttons with icons -->
+                <div class="hero-buttons">
+                    <a href="#cooperation-detailed" class="btn btn-primary">
+                        <span class="btn-icon">🤝</span>
+                        <span class="btn-text">Poznaj Nasze Podejście</span>
+                        <span class="btn-arrow">→</span>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <span class="btn-icon">💬</span>
+                        <span class="btn-text">Skontaktuj się z Nami</span>
+                        <span class="btn-arrow">→</span>
+                    </a>
+                </div>
+                
+                <!-- Animated scroll down indicator -->
+                <div class="scroll-down-indicator">
+                    <div class="mouse-icon">
+                        <div class="mouse-body">
+                            <div class="mouse-wheel"></div>
+                        </div>
+                    </div>
+                    <div class="scroll-arrows">
+                        <div class="arrow"></div>
+                        <div class="arrow"></div>
+                        <div class="arrow"></div>
+                    </div>
+                    <span class="scroll-text">Zjedz w dół</span>
+                </div>
+
+            </div>
         </div>
     </section>
 
-    <section class="cooperation-detailed">
+    <section class="cooperation-detailed" id="cooperation-detailed">
         <div class="container">
             <div class="cooperation-intro">
                 <h2>Dlaczego warto z nami współpracować?</h2>
