@@ -39,6 +39,13 @@ app.get('/portfolio', (req, res) => {
     });
 });
 
+app.get('/cooperation', (req, res) => {
+    res.render('cooperation', {
+        title: 'Cooperation - Artistic Projects',
+        currentPage: 'cooperation'
+    });
+});
+
 // Usuń lub zakomentuj ten blok:
 // app.get('/process', (req, res) => {
 //     res.render('process', {
