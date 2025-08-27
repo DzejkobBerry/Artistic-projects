@@ -403,6 +403,87 @@ document.addEventListener('DOMContentLoaded', () => {
 // Add smooth scroll behavior for better UX
 document.documentElement.style.scrollBehavior = 'smooth';
 
+// Logo Modal Functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const logoModal = document.getElementById('logoModal');
+    const aboutLogo = document.querySelector('.about-logo');
+    const closeBtn = document.querySelector('.modal .close');
+    
+    // Open modal when clicking on the logo
+    if (aboutLogo && logoModal) {
+        aboutLogo.addEventListener('click', (e) => {
+            e.preventDefault();
+            logoModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            
+            // Add entrance animation
+            setTimeout(() => {
+                logoModal.classList.add('show');
+            }, 10);
+        });
+    }
+    
+    // Close modal when clicking the X button
+    if (closeBtn && logoModal) {
+        closeBtn.addEventListener('click', () => {
+            closeModal();
+        });
+    }
+    
+    // Close modal when clicking outside the modal content
+    if (logoModal) {
+        logoModal.addEventListener('click', (e) => {
+            if (e.target === logoModal) {
+                closeModal();
+            }
+        });
+    }
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && logoModal && logoModal.style.display === 'block') {
+            closeModal();
+        }
+    });
+    
+    // Function to close modal with animation
+    function closeModal() {
+        if (logoModal) {
+            logoModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+            
+            // Hide modal after animation completes
+            setTimeout(() => {
+                logoModal.style.display = 'none';
+            }, 300);
+        }
+    }
+    
+    // Add hover effect to owner avatars for future image upload functionality
+    const ownerAvatars = document.querySelectorAll('.owner-avatar');
+    ownerAvatars.forEach(avatar => {
+        avatar.addEventListener('click', () => {
+            // Placeholder for future image upload functionality
+            console.log('Avatar clicked - future image upload functionality');
+        });
+    });
+});
+
+// Add CSS class for modal show animation
+if (!document.querySelector('style[data-modal-styles]')) {
+    const modalStyles = document.createElement('style');
+    modalStyles.setAttribute('data-modal-styles', 'true');
+    modalStyles.textContent = `
+        .modal.show {
+            opacity: 1 !important;
+        }
+        .modal.show .modal-content {
+            transform: translateY(0) scale(1) !important;
+        }
+    `;
+    document.head.appendChild(modalStyles);
+}
+
 // Timeline slider controls
 document.addEventListener('DOMContentLoaded', () => {
     const timelineInfo = document.querySelector('.timeline-info');
