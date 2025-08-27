@@ -6495,22 +6495,44 @@ select:focus {
 .newsletter-form .toggle-slider::before {
     content: '';
     position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 20px;
-    height: 20px;
+    top: 50%;
+    left: 3px;
+    width: 18px;
+    height: 18px;
     background: white;
     border-radius: 50%;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(-50%);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.15),
+        0 1px 2px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .newsletter-form input[type="checkbox"]:checked + .toggle-slider {
-    background: #ff6b9d;
+    background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+    border-color: #ff6b9d;
+    box-shadow: 0 0 0 2px rgba(255, 107, 157, 0.15);
 }
 
 .newsletter-form input[type="checkbox"]:checked + .toggle-slider::before {
-    transform: translateX(20px);
+    transform: translateY(-50%) translateX(22px);
+    box-shadow: 
+        0 3px 8px rgba(255, 107, 157, 0.25),
+        0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.newsletter-form .toggle-label:hover .toggle-slider {
+    background: rgba(200, 200, 200, 0.8);
+}
+
+.newsletter-form .toggle-label:hover input[type="checkbox"]:checked + .toggle-slider {
+    background: linear-gradient(135deg, #ff5a8a 0%, #ff7ba3 100%);
+}
+
+.newsletter-form .toggle-text {
+    flex: 1;
+    user-select: none;
 }
 
 .newsletter-form input[type="checkbox"] {
