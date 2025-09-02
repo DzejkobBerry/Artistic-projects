@@ -822,7 +822,7 @@
                             </div>
                             <div>
                                 <h4>Adres</h4>
-                                <p>ul. Kreatywna 123<br>00-001 Warszawa</p>
+                                <p>Biuro w Rotterdamie</p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -833,7 +833,7 @@
                             </div>
                             <div>
                                 <h4>Telefon</h4>
-                                <p>+48 123 456 789</p>
+                                <p>+31 6 26737846</p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -845,7 +845,11 @@
                             </div>
                             <div>
                                 <h4>Email</h4>
-                                <p>kontakt@artisticprojects.pl</p>
+                                <div class="email-list">
+                                    <p><span class="email-label">Ogólny:</span> <a href="mailto:kontakt@artistic-projects.com">kontakt@artistic-projects.com</a></p>
+                                    <p><span class="email-label">Ewelina:</span> <a href="mailto:ewelina@artistic-projects.com">ewelina@artistic-projects.com</a></p>
+                                    <p><span class="email-label">Robert:</span> <a href="mailto:robert@artistic-projects.com">robert@artistic-projects.com</a></p>
+                                </div>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -857,7 +861,7 @@
                             </div>
                             <div>
                                 <h4>Godziny pracy</h4>
-                                <p>Pon-Pt: 9:00 - 18:00<br>Sob: 10:00 - 14:00</p>
+                                <p>Poniedziałek - Piątek: 9:00 - 17:00<br>Sobota/Niedziela: nieczynne</p>
                             </div>
                         </div>
                     </div>
@@ -867,42 +871,89 @@
                     <form id="contactForm">
                         <div class="form-group">
                             <label for="name">Imię i nazwisko *</label>
-                            <input type="text" id="name" name="name" placeholder="np. Jan Kowalski" required>
+                            <div class="input-with-icon">
+                                <div class="input-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <input type="text" id="name" name="name" placeholder="np. Jan Kowalski" required>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" placeholder="np. jan.kowalski@email.com" required>
+                            <div class="input-with-icon">
+                                <div class="input-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2"/>
+                                        <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <input type="email" id="email" name="email" placeholder="np. jan.kowalski@email.com" required>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="phone">Telefon</label>
-                            <input type="tel" id="phone" name="phone" placeholder="np. +48 123 456 789">
+                            <div class="input-with-icon">
+                                <div class="input-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M22 16.92V19.92A2 2 0 0 1 20.02 21.92C8.91 21.92 0 13.01 0 1.92A2 2 0 0 1 2 -0.08H5A2 2 0 0 1 7 1.92V4.92A2 2 0 0 1 6.5 6.42L5 7.92C6.5 11.42 10.5 15.42 14 16.92L15.5 15.42A2 2 0 0 1 17 14.92H20A2 2 0 0 1 22 16.92Z" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <input type="tel" id="phone" name="phone" placeholder="np. +48 123 456 789">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="service">Rodzaj usługi *</label>
-                            <select id="service" name="service" required>
-                                <option value="">Wybierz rodzaj usługi...</option>
-                                <option value="logo">Projektowanie Logo</option>
-                                <option value="branding">Identyfikacja Wizualna</option>
-                                <option value="print">Materiały Reklamowe</option>
-                                <option value="digital">Projekty Cyfrowe</option>
-                                <option value="textile">Druk Tekstylny</option>
-                                <option value="consultation">Konsultacje</option>
-                                <option value="other">Inne</option>
-                            </select>
+                            <div class="input-with-icon">
+                                <div class="input-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <select id="service" name="service" required>
+                                    <option value="">Wybierz rodzaj usługi...</option>
+                                    <option value="logo">Projektowanie Logo</option>
+                                    <option value="branding">Identyfikacja Wizualna</option>
+                                    <option value="print">Materiały Reklamowe</option>
+                                    <option value="digital">Projekty Cyfrowe</option>
+                                    <option value="textile">Druk Tekstylny</option>
+                                    <option value="consultation">Konsultacje</option>
+                                    <option value="other">Inne</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="budget">Budżet</label>
-                            <select id="budget" name="budget">
-                                <option value="">Wybierz przedział budżetu...</option>
-                                <option value="500-1000">500 - 1000 zł</option>
-                                <option value="1000-2500">1000 - 2500 zł</option>
-                                <option value="2500-5000">2500 - 5000 zł</option>
-                                <option value="5000+">Powyżej 5000 zł</option>
-                            </select>
+                            <div class="input-with-icon">
+                                <div class="input-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <line x1="12" y1="1" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M17 5H9.5A3.5 3.5 0 0 0 9.5 12H14.5A3.5 3.5 0 0 1 14.5 19H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <select id="budget" name="budget">
+                                    <option value="">Wybierz przedział budżetu...</option>
+                                    <option value="500-1000">500 - 1000 zł</option>
+                                    <option value="1000-2500">1000 - 2500 zł</option>
+                                    <option value="2500-5000">2500 - 5000 zł</option>
+                                    <option value="5000+">Powyżej 5000 zł</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="message">Opis projektu *</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Opisz szczegółowo swój projekt, wymagania, oczekiwania, inspiracje i wszelkie dodatkowe informacje, które pomogą nam lepiej zrozumieć Twoją wizję..." required></textarea>
+                            <div class="input-with-icon">
+                                <div class="input-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <textarea id="message" name="message" rows="5" placeholder="Opisz szczegółowo swój projekt, wymagania, oczekiwania, inspiracje i wszelkie dodatkowe informacje, które pomogą nam lepiej zrozumieć Twoją wizję..." required></textarea>
+                            </div>
                         </div>
                         <div class="form-group toggle-group">
                             <label class="toggle-label">

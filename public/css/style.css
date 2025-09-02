@@ -4249,6 +4249,43 @@ body {
     color: var(--text-dark);
 }
 
+/* Email list styling */
+.email-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.email-list p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.email-label {
+    font-weight: 600;
+    color: var(--primary-pink);
+    min-width: 60px;
+    font-size: 0.85rem;
+}
+
+.email-list a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    background: rgba(255, 107, 157, 0.05);
+}
+
+.email-list a:hover {
+    color: var(--primary-pink);
+    background: rgba(255, 107, 157, 0.1);
+    transform: translateX(3px);
+}
+
 .social-links {
     display: flex;
     gap: 1.5rem;
@@ -4411,6 +4448,46 @@ body {
     min-height: 140px;
     font-family: inherit;
     line-height: 1.6;
+}
+
+/* Input with icon styling */
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-icon svg {
+    position: absolute;
+    left: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    color: rgba(255, 107, 157, 0.6);
+    transition: all 0.3s ease;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.input-with-icon input,
+.input-with-icon select,
+.input-with-icon textarea {
+    padding-left: 3.5rem;
+}
+
+.input-with-icon:focus-within svg {
+    color: var(--primary-pink);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.input-with-icon textarea + svg {
+    top: 2rem;
+    transform: translateY(0);
+}
+
+.input-with-icon:focus-within textarea + svg {
+    transform: translateY(0) scale(1.1);
 }
 
 .form-group select {
@@ -5162,6 +5239,22 @@ select:focus {
 
 .footer-links a:hover {
     color: var(--primary-pink);
+}
+
+.footer-links .email-label {
+    color: var(--primary-pink);
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-right: 0.5rem;
+}
+
+.footer-links a {
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    transform: translateX(2px);
+}
     padding-left: 8px;
 }
 
