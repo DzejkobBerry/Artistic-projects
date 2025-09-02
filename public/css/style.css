@@ -4085,6 +4085,7 @@ body {
     gap: 6rem;
     margin-top: 3rem;
     position: relative;
+    align-items: start;
 }
 
 .contact-info {
@@ -4097,6 +4098,7 @@ body {
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
+    height: fit-content;
 }
 
 .contact-info::before {
@@ -4249,6 +4251,20 @@ body {
     color: var(--text-dark);
 }
 
+/* Email link styling */
+.contact-item p a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.contact-item p a:hover {
+    color: var(--primary-pink);
+    transform: translateX(3px);
+}
+
 /* Email list styling */
 .email-list {
     display: flex;
@@ -4346,6 +4362,7 @@ body {
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
+    height: fit-content;
 }
 
 .contact-form::before {
@@ -4696,6 +4713,107 @@ body {
 
 .btn-loading {
     display: none;
+}
+
+/* WhatsApp CTA Styles */
+.whatsapp-cta {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(37, 211, 102, 0.1), rgba(37, 211, 102, 0.05));
+    border-radius: 20px;
+    border: 2px solid rgba(37, 211, 102, 0.2);
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.whatsapp-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(37, 211, 102, 0.1), transparent);
+    transition: left 0.8s ease;
+}
+
+.whatsapp-cta:hover::before {
+    left: 100%;
+}
+
+.whatsapp-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(37, 211, 102, 0.2);
+    border-color: rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-text {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    position: relative;
+    z-index: 2;
+}
+
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: #25d366;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.whatsapp-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.whatsapp-btn:hover::before {
+    left: 100%;
+}
+
+.whatsapp-btn:hover {
+    transform: translateY(-2px);
+    background: #128c7e;
+    box-shadow: 0 12px 35px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-btn svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* Responsywność dla WhatsApp CTA */
+@media (max-width: 768px) {
+    .whatsapp-cta {
+        margin-top: 2rem;
+        padding: 1.5rem;
+    }
+    
+    .whatsapp-btn {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.95rem;
+    }
 }
 
 .btn-submit.loading .btn-text {
@@ -5520,6 +5638,17 @@ select:focus {
     .scroll-to-top svg {
         width: 20px;
         height: 20px;
+    }
+    
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        align-items: stretch;
+    }
+    
+    .contact-info,
+    .contact-form {
+        height: auto;
     }
 }
 
