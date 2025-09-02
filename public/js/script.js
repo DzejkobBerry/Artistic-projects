@@ -41,16 +41,32 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Loading animation
+// Enhanced Loading animation
 window.addEventListener('load', () => {
     const loading = document.querySelector('.loading');
     if (loading) {
+        // Show loading for much longer to appreciate the animation
         setTimeout(() => {
             loading.classList.add('hidden');
+            // Allow more time for the fade-out animation
             setTimeout(() => {
                 loading.style.display = 'none';
-            }, 500);
-        }, 1000);
+                // Enable body scroll after loading is completely hidden
+                document.body.style.overflow = 'auto';
+            }, 1200); // Increased fade-out time
+        }, 4000); // Increased from 2500ms to 4000ms for better visibility
+    }
+    
+    // Prevent scrolling during loading
+    document.body.style.overflow = 'hidden';
+});
+
+// Show preloader immediately when page starts loading
+document.addEventListener('DOMContentLoaded', () => {
+    const loading = document.querySelector('.loading');
+    if (loading) {
+        loading.style.display = 'flex';
+        loading.style.opacity = '1';
     }
 });
 
