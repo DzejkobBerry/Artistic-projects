@@ -2697,10 +2697,42 @@ body {
     align-items: center;
     margin-bottom: 4rem;
     position: relative;
+    opacity: 0;
+    animation: slideInFromSide 0.8s ease-out forwards;
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.2s; }
+.timeline-item:nth-child(2) { animation-delay: 0.4s; }
+.timeline-item:nth-child(3) { animation-delay: 0.6s; }
+.timeline-item:nth-child(4) { animation-delay: 0.8s; }
+.timeline-item:nth-child(5) { animation-delay: 1.0s; }
+.timeline-item:nth-child(6) { animation-delay: 1.2s; }
+
+@keyframes slideInFromSide {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .timeline-item:nth-child(even) {
     flex-direction: row-reverse;
+    animation-name: slideInFromSideRight;
+}
+
+@keyframes slideInFromSideRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .timeline-number {
@@ -6602,48 +6634,9 @@ select:focus {
     }
 }
 
-.timeline-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 0.8rem;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 1.5rem 1rem;
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 107, 157, 0.15);
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(255, 107, 157, 0.08);
-    animation: timelineSlideIn 1.5s ease-out both;
-    animation-delay: calc(var(--timeline-index, 0) * 0.15s);
-    position: relative;
-    min-width: 180px;
-    flex-shrink: 0;
-}
+/* Usunięto nadpisujące style timeline-item */
 
-.timeline-item:nth-child(1) { --timeline-index: 1; }
-.timeline-item:nth-child(2) { --timeline-index: 2; }
-.timeline-item:nth-child(3) { --timeline-index: 3; }
-.timeline-item:nth-child(4) { --timeline-index: 4; }
-
-@keyframes timelineSlideIn {
-    0% {
-        opacity: 0;
-        transform: translateX(-30px) scale(0.9);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0) scale(1);
-    }
-}
-
-.timeline-item:hover {
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 12px 35px rgba(255, 107, 157, 0.2);
-    transform: translateY(-5px) scale(1.02);
-    border-color: rgba(255, 107, 157, 0.3);
-}
+/* Usunięto nadpisujące animacje timeline */
 
 .timeline-icon {
     width: 40px;
