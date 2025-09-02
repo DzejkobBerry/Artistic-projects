@@ -3465,11 +3465,7 @@ body {
 }
 
 /* Improve thumbnail scrolling for many images */
-.project-thumbnails {
-    max-height: 120px;
-    overflow-y: auto;
-    padding-right: 5px;
-}
+
 
 .project-thumbnails::-webkit-scrollbar {
     width: 6px;
@@ -3593,8 +3589,12 @@ body {
 
 .project-thumbnails {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 0.5rem;
 }
 
 .project-thumbnail {
