@@ -5364,6 +5364,15 @@ select:focus {
     font-weight: 600;
     font-size: 0.85rem;
     margin-right: 0.5rem;
+    display: inline;
+    white-space: nowrap;
+}
+
+.footer-links li {
+    margin-bottom: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .footer-links a {
