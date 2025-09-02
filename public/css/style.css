@@ -2907,6 +2907,18 @@ body {
     transform: scale(1.1) rotate(5deg);
 }
 
+.portfolio-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-img {
+    transform: scale(1.05);
+}
+
 .portfolio-overlay {
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
     color: white;
@@ -3350,6 +3362,131 @@ body {
     color: var(--text-light);
     font-size: 0.9rem;
     line-height: 1.5;
+}
+
+.gallery-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-img {
+    transform: scale(1.05);
+}
+
+/* Image Zoom Modal Styles */
+.image-zoom-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.image-zoom-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.image-zoom-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    cursor: pointer;
+}
+
+.image-zoom-container {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    z-index: 10003;
+}
+
+.image-zoom-img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.image-zoom-close {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10004;
+}
+
+.image-zoom-close:hover {
+    background: #fff;
+    transform: scale(1.1);
+}
+
+/* Responsive adjustments for zoom modal */
+@media (max-width: 768px) {
+    .image-zoom-container {
+        max-width: 95vw;
+        max-height: 85vh;
+    }
+    
+    .image-zoom-close {
+        top: -10px;
+        right: -10px;
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+    }
+}
+
+/* Improve thumbnail scrolling for many images */
+.project-thumbnails {
+    max-height: 120px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.project-thumbnails::-webkit-scrollbar {
+    width: 6px;
+}
+
+.project-thumbnails::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.project-thumbnails::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.project-thumbnails::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
 }
 
 /* Project Detail Modal Styles */

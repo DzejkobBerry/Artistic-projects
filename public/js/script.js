@@ -403,6 +403,39 @@ document.addEventListener('DOMContentLoaded', () => {
 // Add smooth scroll behavior for better UX
 document.documentElement.style.scrollBehavior = 'smooth';
 
+// Portfolio filtering functionality
+const filterButtons = document.querySelectorAll('.filter-btn');
+const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+if (filterButtons.length > 0 && portfolioItems.length > 0) {
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            button.classList.add('active');
+            
+            const filterValue = button.getAttribute('data-filter');
+            
+            portfolioItems.forEach(item => {
+                if (filterValue === 'all') {
+                    item.style.display = 'block';
+                    item.style.opacity = '1';
+                } else {
+                    const itemCategory = item.getAttribute('data-category');
+                    if (itemCategory === filterValue) {
+                        item.style.display = 'block';
+                        item.style.opacity = '1';
+                    } else {
+                        item.style.display = 'none';
+                        item.style.opacity = '0';
+                    }
+                }
+            });
+        });
+    });
+}
+
 // Logo Modal Functionality
 document.addEventListener('DOMContentLoaded', () => {
     const logoModal = document.getElementById('logoModal');
@@ -792,56 +825,51 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Project data for different projects
     const projectData = {
-        'tech-startup': {
-            title: 'Logo "TechStart"',
-            description: 'Minimalistyczne logo dla startupu technologicznego z nowoczesnymi elementami. Projekt obejmuje pełną identyfikację wizualną z logo, wizytówkami i papeterią firmową.',
-            tags: ['Logo Design', 'Tech', 'Startup']
+        'tworzenie-logo': {
+            title: 'Tworzenie Logo',
+            description: 'Profesjonalne projektowanie logo i identyfikacji wizualnej dla firm z różnych branż. Tworzymy unikalne znaki graficzne, które wyróżniają Twoją markę na rynku.',
+            tags: ['Logo Design', 'Branding', 'Identyfikacja Wizualna']
         },
-        'restaurant-smakow': {
-             title: 'Logo Restauracji "Smaków"',
-             description: 'Eleganckie logo dla restauracji z tradycyjnymi smakami. Projekt łączy klasyczne elementy kulinarne z nowoczesnym designem, podkreślając autentyczność i jakość potraw.',
-             tags: ['Logo Design', 'Restaurant', 'Traditional']
-         },
-         'fitness-powergym': {
-             title: 'Logo Fitness "PowerGym"',
-             description: 'Dynamiczne logo dla siłowni i centrum fitness. Projekt charakteryzuje się energetycznymi elementami graficznymi, które motywują do aktywności fizycznej i podkreślają siłę marki.',
-             tags: ['Logo Design', 'Fitness', 'Sport']
-         },
-        'ecolife-brand': {
-            title: 'Branding "EcoLife"',
-            description: 'Kompleksowy branding dla firmy ekologicznej. Projekt obejmuje logo, wizytówki, papeterię, oraz materiały marketingowe. Wykorzystano naturalne kolory i organiczne kształty.',
-            tags: ['Branding', 'Eco', 'Nature']
+        'projekty-graficzne': {
+            title: 'Projekty Graficzne',
+            description: 'Kompleksowe rozwiązania graficzne dla Twojej marki - od wizytówek, przez ulotki, po banery reklamowe. Każdy projekt dostosowany do indywidualnych potrzeb klienta.',
+            tags: ['Graphic Design', 'Print Design', 'Marketing']
         },
-        'luxury-spa': {
-            title: 'Branding "Luxury Spa"',
-            description: 'Elegancka identyfikacja wizualna dla ekskluzywnego spa i wellness. Projekt podkreśla luksusowy charakter marki poprzez wyrafinowane elementy graficzne i premium kolorystykę.',
-            tags: ['Branding', 'Luxury', 'Spa']
+        'druk-3d': {
+            title: 'Druk 3D',
+            description: 'Innowacyjne rozwiązania w technologii druku 3D. Realizujemy prototypy, elementy dekoracyjne, funkcjonalne części oraz personalizowane gadżety.',
+            tags: ['3D Printing', 'Prototyping', 'Innovation']
         },
-        'business-cards': {
-            title: 'Wizytówki Premium',
-            description: 'Eleganckie wizytówki biznesowe wykonane na wysokiej jakości papierze. Projekt łączy klasyczną elegancję z nowoczesnymi elementami graficznymi. Dostępne w różnych wariantach kolorystycznych.',
-            tags: ['Print Design', 'Business Cards', 'Premium']
+        'grawer-laserowy': {
+            title: 'Grawer Laserowy',
+            description: 'Precyzyjne grawerowanie laserowe na różnych materiałach - drewno, metal, szkło, skóra. Idealne do personalizacji gadżetów i tworzenia pamiątek.',
+            tags: ['Laser Engraving', 'Personalization', 'Precision']
         },
-        'brochure-design': {
-             title: 'Broszura Informacyjna',
-             description: 'Profesjonalne materiały drukowane dla centrum medycznego. Projekt charakteryzuje się przejrzystym layoutem, czytelną typografią i profesjonalną prezentacją informacji medycznych.',
-             tags: ['Print Design', 'Brochure', 'Medical']
-         },
-         'creative-studio': {
-             title: 'Branding "Creative Studio"',
-             description: 'Kreatywna identyfikacja dla studia projektowego z artystycznymi elementami. Projekt łączy nowoczesność z kreatywnością, tworząc unikalną tożsamość wizualną.',
-             tags: ['Branding', 'Creative', 'Studio']
-         },
-         'furniture-catalog': {
-             title: 'Katalog "Meble Design"',
-             description: 'Profesjonalny katalog produktów dla firmy meblarskiej z eleganckimi zdjęciami. Projekt charakteryzuje się wysoką jakością prezentacji produktów i przejrzystym układem.',
-             tags: ['Print Design', 'Katalog', 'Furniture']
-         },
-         'festival-flyers': {
-             title: 'Ulotki "Summer Festival"',
-             description: 'Kolorowe ulotki promocyjne dla festiwalu muzycznego z żywymi grafikami. Projekt przyciąga uwagę dynamicznymi elementami i energetyczną kolorystyką.',
-             tags: ['Print Design', 'Event', 'Festival']
-         }
+        'nadruki-dtf': {
+            title: 'Nadruki DTF',
+            description: 'Wysokiej jakości nadruki DTF na odzieży i akcesoriach. Trwałe, żywe kolory i możliwość nadruku na różnych materiałach tekstylnych.',
+            tags: ['DTF Printing', 'Textile', 'Custom Apparel']
+        },
+        'naklejki': {
+            title: 'Naklejki',
+            description: 'Personalizowane naklejki w różnych formatach i materiałach. Od naklejek reklamowych, przez etykiety produktowe, po naklejki dekoracyjne.',
+            tags: ['Stickers', 'Labels', 'Advertising']
+        },
+        'breloczki': {
+            title: 'Breloczki',
+            description: 'Unikalne breloczki personalizowane według Twoich potrzeb. Różne materiały i techniki wykonania - od grawerowania po druk 3D.',
+            tags: ['Keychains', 'Personalization', 'Accessories']
+        },
+        'kubki': {
+            title: 'Kubki',
+            description: 'Personalizowane kubki z indywidualnymi projektami. Idealne jako gadżety firmowe, prezenty lub elementy brandingu kawiarni i restauracji.',
+            tags: ['Mugs', 'Custom Design', 'Corporate Gifts']
+        },
+        'fotografia-video-dron': {
+            title: 'Fotografia/Video/Dron',
+            description: 'Profesjonalne usługi fotograficzne i filmowe z wykorzystaniem dronów. Zdjęcia z lotu ptaka, filmy promocyjne i dokumentacja eventów.',
+            tags: ['Photography', 'Video', 'Drone Services']
+        }
     };
     
     // Open gallery modal
@@ -916,6 +944,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     tagsContainer.appendChild(tagElement);
                 });
                 
+                // Update project images
+                updateProjectImages(projectId);
+                
                 // Close gallery modal and open project modal
                 galleryModal.classList.remove('show');
                 setTimeout(() => {
@@ -938,26 +969,190 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
+    // Function to update project images
+    async function updateProjectImages(projectId) {
+        const mainImageContainer = document.querySelector('.project-image-placeholder');
+        const thumbnailsContainer = document.querySelector('.project-thumbnails');
+        
+        if (mainImageContainer && thumbnailsContainer) {
+            // Clear existing content
+            mainImageContainer.innerHTML = '';
+            thumbnailsContainer.innerHTML = '';
+            
+            // Create main image with zoom functionality
+            const mainImg = document.createElement('img');
+            mainImg.src = `/images/portfolio/${projectId}/main.jpg`;
+            mainImg.alt = projectData[projectId]?.title || 'Project Image';
+            mainImg.style.cssText = 'width: 100%; height: 100%; object-fit: cover; border-radius: 15px; cursor: zoom-in;';
+            
+            // Add zoom functionality to main image
+            mainImg.addEventListener('click', () => {
+                openImageZoom(mainImg.src, mainImg.alt);
+            });
+            
+            // Handle image load error
+            mainImg.onerror = function() {
+                mainImageContainer.innerHTML = `
+                    <svg width="100" height="100" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="2"/>
+                        <polyline points="21,15 16,10 5,21" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                `;
+            };
+            
+            mainImageContainer.appendChild(mainImg);
+            
+            // Dynamically detect available images
+            const availableImages = await detectAvailableImages(projectId);
+            
+            // Create thumbnails for all available images
+            availableImages.forEach((imageInfo, index) => {
+                const thumbnail = document.createElement('div');
+                thumbnail.className = `project-thumbnail ${index === 0 ? 'active' : ''}`;
+                
+                const thumbImg = document.createElement('img');
+                thumbImg.src = imageInfo.src;
+                thumbImg.alt = imageInfo.alt;
+                thumbImg.style.cssText = 'width: 100%; height: 100%; object-fit: cover; border-radius: 10px;';
+                
+                // Handle thumbnail error - show SVG fallback
+                thumbImg.onerror = function() {
+                    thumbnail.innerHTML = `
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    `;
+                };
+                
+                thumbnail.appendChild(thumbImg);
+                
+                // Add click handler for thumbnail
+                thumbnail.addEventListener('click', () => {
+                    // Remove active class from all thumbnails
+                    document.querySelectorAll('.project-thumbnail').forEach(thumb => thumb.classList.remove('active'));
+                    // Add active class to clicked thumbnail
+                    thumbnail.classList.add('active');
+                    
+                    // Update main image
+                    const newMainImg = document.createElement('img');
+                    newMainImg.src = imageInfo.src;
+                    newMainImg.alt = imageInfo.alt;
+                    newMainImg.style.cssText = 'width: 100%; height: 100%; object-fit: cover; border-radius: 15px; cursor: zoom-in;';
+                    
+                    // Add zoom functionality to new main image
+                    newMainImg.addEventListener('click', () => {
+                        openImageZoom(newMainImg.src, newMainImg.alt);
+                    });
+                    
+                    newMainImg.onerror = function() {
+                        mainImageContainer.innerHTML = `
+                            <svg width="100" height="100" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="21,15 16,10 5,21" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        `;
+                    };
+                    
+                    mainImageContainer.innerHTML = '';
+                    mainImageContainer.appendChild(newMainImg);
+                });
+                
+                thumbnailsContainer.appendChild(thumbnail);
+            });
+        }
+    }
+    
+    // Function to detect available images in a project folder
+    async function detectAvailableImages(projectId) {
+        const availableImages = [];
+        const maxImages = 50; // Maximum number of images to check
+        const extensions = ['jpg', 'jpeg', 'png', 'webp'];
+        
+        // Check numbered images (1.jpg, 2.jpg, etc.)
+        for (let i = 1; i <= maxImages; i++) {
+            for (const ext of extensions) {
+                const imageSrc = `/images/portfolio/${projectId}/${i}.${ext}`;
+                const exists = await checkImageExists(imageSrc);
+                if (exists) {
+                    availableImages.push({
+                        src: imageSrc,
+                        alt: `${projectData[projectId]?.title || 'Project'} ${i}`
+                    });
+                    break; // Found image with this number, move to next number
+                }
+            }
+        }
+        
+        return availableImages;
+    }
+    
+    // Function to check if an image exists
+    function checkImageExists(src) {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(false);
+            img.src = src;
+        });
+    }
+    
+    // Function to open image zoom modal
+    function openImageZoom(imageSrc, imageAlt) {
+        // Create zoom modal if it doesn't exist
+        let zoomModal = document.getElementById('imageZoomModal');
+        if (!zoomModal) {
+            zoomModal = document.createElement('div');
+            zoomModal.id = 'imageZoomModal';
+            zoomModal.className = 'image-zoom-modal';
+            zoomModal.innerHTML = `
+                <div class="image-zoom-overlay"></div>
+                <div class="image-zoom-container">
+                    <button class="image-zoom-close">&times;</button>
+                    <img class="image-zoom-img" src="" alt="">
+                </div>
+            `;
+            document.body.appendChild(zoomModal);
+            
+            // Add close functionality
+            const closeBtn = zoomModal.querySelector('.image-zoom-close');
+            const overlay = zoomModal.querySelector('.image-zoom-overlay');
+            
+            closeBtn.addEventListener('click', () => {
+                zoomModal.classList.remove('show');
+                document.body.style.overflow = '';
+            });
+            
+            overlay.addEventListener('click', () => {
+                zoomModal.classList.remove('show');
+                document.body.style.overflow = '';
+            });
+            
+            // Close on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && zoomModal.classList.contains('show')) {
+                    zoomModal.classList.remove('show');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+        
+        // Update image and show modal
+        const zoomImg = zoomModal.querySelector('.image-zoom-img');
+        zoomImg.src = imageSrc;
+        zoomImg.alt = imageAlt;
+        
+        zoomModal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+    
     // Add click handlers to existing portfolio items for direct access
     const portfolioItems = document.querySelectorAll('.portfolio-item');
     portfolioItems.forEach(item => {
         item.addEventListener('click', () => {
-            // Get category and create a project ID based on the title
-            const category = item.dataset.category;
-            const title = item.querySelector('.portfolio-overlay h4')?.textContent;
-            
-            // Map existing portfolio items to project data
-            let projectId = null;
-            if (title?.includes('TechStart') || title?.includes('Tech Startup')) projectId = 'tech-startup';
-            else if (title?.includes('Smaków')) projectId = 'restaurant-smakow';
-            else if (title?.includes('PowerGym')) projectId = 'fitness-powergym';
-            else if (title?.includes('EcoLife')) projectId = 'ecolife-brand';
-            else if (title?.includes('Luxury Spa')) projectId = 'luxury-spa';
-            else if (title?.includes('Creative Studio')) projectId = 'creative-studio';
-            else if (title?.includes('Katalog') || title?.includes('Meble')) projectId = 'furniture-catalog';
-            else if (title?.includes('Ulotki') || title?.includes('Festival')) projectId = 'festival-flyers';
-            else if (title?.includes('Broszura') || title?.includes('Medical')) projectId = 'brochure-design';
-            else if (title?.includes('Wizytówki') || title?.includes('Business')) projectId = 'business-cards';
+            // Get project ID from data-category attribute (use category as project ID)
+            const projectId = item.dataset.category;
             
             if (projectId && projectData[projectId]) {
                 const project = projectData[projectId];
@@ -976,6 +1171,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     tagElement.textContent = tag;
                     tagsContainer.appendChild(tagElement);
                 });
+                
+                // Update project images
+                updateProjectImages(projectId);
                 
                 // Open project modal
                 projectModal.classList.add('show');
