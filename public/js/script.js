@@ -475,9 +475,68 @@ if (filterButtons.length > 0 && portfolioItems.length > 0) {
                     }
                 }
             });
+            
+            // Update mobile filter toggle text if mobile dropdown is visible
+            const mobileToggle = document.getElementById('mobileFilterToggle');
+            const filterText = mobileToggle?.querySelector('.filter-text');
+            if (filterText && window.innerWidth <= 768) {
+                filterText.textContent = button.textContent;
+                // Close mobile menu after selection
+                const mobileMenu = document.getElementById('mobileFilterMenu');
+                const mobileToggleBtn = document.getElementById('mobileFilterToggle');
+                if (mobileMenu && mobileToggleBtn) {
+                    mobileMenu.classList.remove('show');
+                    mobileToggleBtn.classList.remove('active');
+                }
+            }
         });
     });
 }
+
+// Mobile filter dropdown functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileToggle = document.getElementById('mobileFilterToggle');
+    const mobileMenu = document.getElementById('mobileFilterMenu');
+    
+    if (mobileToggle && mobileMenu) {
+        // Toggle dropdown menu
+        mobileToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenu.classList.toggle('show');
+            mobileToggle.classList.toggle('active');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.remove('show');
+                mobileToggle.classList.remove('active');
+            }
+        });
+        
+        // Close dropdown on window resize if switching to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                mobileMenu.classList.remove('show');
+                mobileToggle.classList.remove('active');
+            }
+        });
+        
+        // Handle mobile filter selection
+        const mobileFilterButtons = mobileMenu.querySelectorAll('.filter-btn');
+        const desktopFilterButtons = document.querySelectorAll('.desktop-filters .filter-btn');
+        
+        mobileFilterButtons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                // Sync with desktop filters
+                if (desktopFilterButtons[index]) {
+                    desktopFilterButtons.forEach(btn => btn.classList.remove('active'));
+                    desktopFilterButtons[index].classList.add('active');
+                }
+            });
+        });
+    }
+});
 
 // Logo Modal Functionality
 document.addEventListener('DOMContentLoaded', () => {

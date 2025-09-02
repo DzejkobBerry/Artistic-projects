@@ -526,16 +526,41 @@
                 <p class="section-subtitle">Galeria naszych najlepszych realizacji</p>
             </div>
             <div class="portfolio-filters">
-                <button class="filter-btn active" data-filter="all">Wszystkie</button>
-                <button class="filter-btn" data-filter="tworzenie-logo">Tworzenie Logo</button>
-                <button class="filter-btn" data-filter="projekty-graficzne">Projekty Graficzne</button>
-                <button class="filter-btn" data-filter="druk-3d">Druk 3D</button>
-                <button class="filter-btn" data-filter="grawer-laserowy">Grawer Laserowy</button>
-                <button class="filter-btn" data-filter="nadruki-dtf">Nadruki DTF</button>
-                <button class="filter-btn" data-filter="naklejki">Naklejki</button>
-                <button class="filter-btn" data-filter="breloczki">Breloczki</button>
-                <button class="filter-btn" data-filter="kubki">Kubki</button>
-                <button class="filter-btn" data-filter="fotografia-video-dron">Fotografia/Video/Dron</button>
+                <!-- Mobile dropdown toggle button -->
+                <div class="mobile-filter-dropdown">
+                    <button class="mobile-filter-toggle" id="mobileFilterToggle">
+                        <span class="filter-text">Wszystkie</span>
+                        <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                            <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="mobile-filter-menu" id="mobileFilterMenu">
+                        <button class="filter-btn active" data-filter="all">Wszystkie</button>
+                        <button class="filter-btn" data-filter="tworzenie-logo">Tworzenie Logo</button>
+                        <button class="filter-btn" data-filter="projekty-graficzne">Projekty Graficzne</button>
+                        <button class="filter-btn" data-filter="druk-3d">Druk 3D</button>
+                        <button class="filter-btn" data-filter="grawer-laserowy">Grawer Laserowy</button>
+                        <button class="filter-btn" data-filter="nadruki-dtf">Nadruki DTF</button>
+                        <button class="filter-btn" data-filter="naklejki">Naklejki</button>
+                        <button class="filter-btn" data-filter="breloczki">Breloczki</button>
+                        <button class="filter-btn" data-filter="kubki">Kubki</button>
+                        <button class="filter-btn" data-filter="fotografia-video-dron">Fotografia/Video/Dron</button>
+                    </div>
+                </div>
+                
+                <!-- Desktop filters (hidden on mobile) -->
+                <div class="desktop-filters">
+                    <button class="filter-btn active" data-filter="all">Wszystkie</button>
+                    <button class="filter-btn" data-filter="tworzenie-logo">Tworzenie Logo</button>
+                    <button class="filter-btn" data-filter="projekty-graficzne">Projekty Graficzne</button>
+                    <button class="filter-btn" data-filter="druk-3d">Druk 3D</button>
+                    <button class="filter-btn" data-filter="grawer-laserowy">Grawer Laserowy</button>
+                    <button class="filter-btn" data-filter="nadruki-dtf">Nadruki DTF</button>
+                    <button class="filter-btn" data-filter="naklejki">Naklejki</button>
+                    <button class="filter-btn" data-filter="breloczki">Breloczki</button>
+                    <button class="filter-btn" data-filter="kubki">Kubki</button>
+                    <button class="filter-btn" data-filter="fotografia-video-dron">Fotografia/Video/Dron</button>
+                </div>
             </div>
             <div class="portfolio-grid">
                 <!-- Tworzenie Logo -->
