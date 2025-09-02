@@ -17,6 +17,33 @@ if (hamburger && navMenu) {
     });
 }
 
+// Mobile language dropdown toggle
+const mobileLanguageBtn = document.getElementById('mobileLanguageBtn');
+const mobileLanguageOptions = document.getElementById('mobileLanguageOptions');
+
+if (mobileLanguageBtn && mobileLanguageOptions) {
+    mobileLanguageBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        mobileLanguageBtn.classList.toggle('active');
+    });
+
+    // Close mobile language dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!mobileLanguageBtn.contains(e.target) && !mobileLanguageOptions.contains(e.target)) {
+            mobileLanguageBtn.classList.remove('active');
+        }
+    });
+
+    // Handle mobile language option clicks
+    mobileLanguageOptions.querySelectorAll('.language-option').forEach(option => {
+        option.addEventListener('click', () => {
+            mobileLanguageBtn.classList.remove('active');
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+}
+
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
