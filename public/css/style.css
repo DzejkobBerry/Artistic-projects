@@ -4781,20 +4781,22 @@ body {
 }
 
 .project-thumbnails {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-    max-height: 200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 0.8rem;
+    max-height: 180px;
     overflow-y: auto;
     padding: 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-pink) transparent;
+    justify-items: center;
 }
 
 .project-thumbnail {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 10px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -4802,6 +4804,15 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     border: 2px solid transparent;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.project-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 .project-thumbnail:hover,
