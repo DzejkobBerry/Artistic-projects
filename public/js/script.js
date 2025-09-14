@@ -1081,19 +1081,36 @@ document.addEventListener('DOMContentLoaded', () => {
             mainImageContainer.innerHTML = '';
             thumbnailsContainer.innerHTML = '';
             
+            // Dynamically detect available images first
+            const availableImages = await detectAvailableImages(projectId);
+            console.log(`Found ${availableImages.length} images for project: ${projectId}`, availableImages);
+            
             // Create main image with zoom functionality
-            const mainImg = document.createElement('img');
-            mainImg.src = `/images/portfolio/${projectId}/main.jpg`;
-            mainImg.alt = projectData[projectId]?.title || 'Project Image';
-            mainImg.style.cssText = 'width: 100%; height: 100%; object-fit: cover; border-radius: 15px; cursor: zoom-in;';
-            
-            // Add zoom functionality to main image
-            mainImg.addEventListener('click', () => {
-                openImageZoom(mainImg.src, mainImg.alt);
-            });
-            
-            // Handle image load error
-            mainImg.onerror = function() {
+            if (availableImages.length > 0) {
+                const mainImg = document.createElement('img');
+                mainImg.src = availableImages[0].src; // Use first available image
+                mainImg.alt = availableImages[0].alt;
+                mainImg.style.cssText = 'width: 100%; height: 100%; object-fit: cover; border-radius: 15px; cursor: zoom-in;';
+                
+                // Add zoom functionality to main image
+                mainImg.addEventListener('click', () => {
+                    openImageZoom(mainImg.src, mainImg.alt);
+                });
+                
+                // Handle image load error
+                mainImg.onerror = function() {
+                    mainImageContainer.innerHTML = `
+                        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="2"/>
+                            <polyline points="21,15 16,10 5,21" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    `;
+                };
+                
+                mainImageContainer.appendChild(mainImg);
+            } else {
+                // No images found, show placeholder
                 mainImageContainer.innerHTML = `
                     <svg width="100" height="100" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
@@ -1101,12 +1118,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         <polyline points="21,15 16,10 5,21" stroke="currentColor" stroke-width="2"/>
                     </svg>
                 `;
-            };
+            }
             
-            mainImageContainer.appendChild(mainImg);
-            
-            // Dynamically detect available images
-            const availableImages = await detectAvailableImages(projectId);
+            // Create thumbnails for all available images (availableImages already detected above)
             
             // Create thumbnails for all available images
             availableImages.forEach((imageInfo, index) => {
@@ -1172,7 +1186,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const maxImages = 50; // Maximum number of images to check
         const extensions = ['jpg', 'jpeg', 'png', 'webp'];
         
-        // Check numbered images (1.jpg, 2.jpg, etc.)
+        // First, add the main image
+        for (const ext of extensions) {
+            const mainImageSrc = `/images/portfolio/${projectId}/main.${ext}`;
+            const exists = await checkImageExists(mainImageSrc);
+            if (exists) {
+                availableImages.push({
+                    src: mainImageSrc,
+                    alt: `${projectData[projectId]?.title || 'Project'} - Główne zdjęcie`
+                });
+                break; // Found main image, stop checking other extensions
+            }
+        }
+        
+        // Then check numbered images (1.jpg, 2.jpg, etc.)
         for (let i = 1; i <= maxImages; i++) {
             for (const ext of extensions) {
                 const imageSrc = `/images/portfolio/${projectId}/${i}.${ext}`;
