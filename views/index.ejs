@@ -1001,24 +1001,13 @@
                                 <textarea id="message" name="message" rows="5" placeholder="Opisz szczegółowo swój projekt, wymagania, oczekiwania, inspiracje i wszelkie dodatkowe informacje, które pomogą nam lepiej zrozumieć Twoją wizję..." required></textarea>
                             </div>
                         </div>
-                        <div class="form-group toggle-group">
-                            <label class="toggle-label">
-                                <input type="checkbox" id="privacy" name="privacy" required>
-                                <span class="toggle-slider"></span>
-                                Akceptuję <a href="#">politykę prywatności</a> *
-                            </label>
-                        </div>
-                        <div class="form-group toggle-group">
-                            <label class="toggle-label">
-                                <input type="checkbox" id="newsletter" name="newsletter">
-                                <span class="toggle-slider"></span>
-                                Chcę otrzymywać newsletter z nowościami
-                            </label>
-                        </div>
+                        <input type="hidden" id="privacy" name="privacy" value="true">
+                        <input type="hidden" id="newsletter" name="newsletter" value="false">
                         <button type="submit" class="btn btn-primary btn-submit">
                             <span class="btn-text">Wyślij Wiadomość</span>
                             <span class="btn-loading">Wysyłanie...</span>
                         </button>
+                        <p class="privacy-notice">Korzystając ze strony akceptujesz <a href="#">politykę prywatności</a></p>
                     </form>
                 </div>
             </div>
