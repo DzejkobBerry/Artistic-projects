@@ -447,7 +447,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Add smooth scroll behavior for better UX
+// Budget slider functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const budgetSlider = document.getElementById('budget');
+    const budgetValue = document.getElementById('budgetValue');
+    
+    if (budgetSlider && budgetValue) {
+        // Update display value when slider changes
+        budgetSlider.addEventListener('input', function() {
+            const value = parseInt(this.value);
+            budgetValue.textContent = value.toLocaleString();
+            
+            // Update slider background gradient
+            const percentage = ((value - 25) / (10000 - 25)) * 100;
+            this.style.background = `linear-gradient(to right, var(--gradient-1) 0%, var(--gradient-1) ${percentage}%, #e0e0e0 ${percentage}%, #e0e0e0 100%)`;
+        });
+        
+        // Initialize slider appearance
+        const initialValue = parseInt(budgetSlider.value);
+        const initialPercentage = ((initialValue - 25) / (10000 - 25)) * 100;
+        budgetSlider.style.background = `linear-gradient(to right, var(--gradient-1) 0%, var(--gradient-1) ${initialPercentage}%, #e0e0e0 ${initialPercentage}%, #e0e0e0 100%)`;
+    }
+});
+
 document.documentElement.style.scrollBehavior = 'smooth';
 
 // Portfolio filtering functionality
