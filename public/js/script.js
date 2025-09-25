@@ -1183,7 +1183,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to detect available images in a project folder
     async function detectAvailableImages(projectId) {
         const availableImages = [];
-        const maxImages = 50; // Maximum number of images to check
+        
+        // Define realistic maximum images for each project based on actual content
+        const projectImageLimits = {
+            'tworzenie-logo': 2,
+            'projekty-graficzne': 18,
+            'druk-3d': 8,
+            'grawer-laserowy': 14,
+            'nadruki-dtf': 30,
+            'naklejki': 7,
+            'breloczki': 8,
+            'kubki': 11,
+            'fotografia-video-dron': 22
+        };
+        
+        const maxImages = projectImageLimits[projectId] || 5; // Default to 5 if project not found
         const extensions = ['jpg', 'jpeg', 'png', 'webp'];
         
         // First, add the main image
