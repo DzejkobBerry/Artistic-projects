@@ -1502,6 +1502,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
                 
+                console.log('Formspree response status:', response.status);
+                console.log('Formspree response:', response);
+                
                 if (response.ok) {
                     // Success - show success message
                     showContactFormMessage('success', 'Dziękujemy!', 'Twoja wiadomość została wysłana pomyślnie. Skontaktujemy się z Tobą wkrótce.');
@@ -1517,6 +1520,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     // Error response from Formspree
                     const data = await response.json();
+                    console.error('Formspree error response:', data);
                     throw new Error(data.error || 'Wystąpił błąd podczas wysyłania wiadomości.');
                 }
             } catch (error) {
