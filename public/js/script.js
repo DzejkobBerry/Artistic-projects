@@ -405,13 +405,17 @@ function animateCounter(element, target, duration = 2000) {
     const increment = target / (duration / 16); // 60 FPS
     let current = start;
     
+    // Check if this stat should have a + sign
+    const shouldHavePlus = target === 500 || target === 1000;
+    
     const timer = setInterval(() => {
         current += increment;
         if (current >= target) {
             current = target;
             clearInterval(timer);
         }
-        element.textContent = Math.floor(current);
+        const displayValue = Math.floor(current);
+        element.textContent = shouldHavePlus ? displayValue + '+' : displayValue;
     }, 16);
 }
 
