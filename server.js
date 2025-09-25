@@ -46,6 +46,11 @@ app.get('/cooperation', (req, res) => {
     });
 });
 
+// Redirect do poczty
+app.get('/poczta', (req, res) => {
+    res.redirect('https://zimbra1.mail.ovh.net');
+});
+
 // Usuń lub zakomentuj ten blok:
 // app.get('/process', (req, res) => {
 //     res.render('process', {
