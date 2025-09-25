@@ -1476,3 +1476,105 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Add smooth scroll behavior for better UX
 document.documentElement.style.scrollBehavior = 'smooth';
+
+// Contact Form handling for Formspree
+document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.getElementById('contactForm');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = contactForm.querySelector('.btn-submit');
+            const formData = new FormData(contactForm);
+            
+            // Show loading state
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+            
+            try {
+                // Submit to Formspree
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Success - show success message
+                    showContactFormMessage('success', 'Dziękujemy!', 'Twoja wiadomość została wysłana pomyślnie. Skontaktujemy się z Tobą wkrótce.');
+                    contactForm.reset();
+                    
+                    // Reset budget slider display
+                    const budgetValue = document.getElementById('budgetValue');
+                    const budgetSlider = document.getElementById('budget');
+                    if (budgetValue && budgetSlider) {
+                        budgetValue.textContent = '1000';
+                        budgetSlider.value = '1000';
+                    }
+                } else {
+                    // Error response from Formspree
+                    const data = await response.json();
+                    throw new Error(data.error || 'Wystąpił błąd podczas wysyłania wiadomości.');
+                }
+            } catch (error) {
+                // Network error or other issues
+                showContactFormMessage('error', 'Błąd', 'Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie później.');
+                console.error('Form submission error:', error);
+            } finally {
+                // Reset button state
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+            }
+        });
+    }
+});
+
+// Function to show contact form messages
+function showContactFormMessage(type, title, message) {
+    // Remove any existing message
+    const existingMessage = document.querySelector('.contact-form-message');
+    if (existingMessage) {
+        existingMessage.remove();
+    }
+    
+    // Create message element
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `contact-form-message contact-form-message-${type}`;
+    messageDiv.innerHTML = `
+        <div class="contact-form-message-content">
+            <div class="contact-form-message-icon">
+                ${type === 'success' ? 
+                    '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>' :
+                    '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>'
+                }
+            </div>
+            <div class="contact-form-message-text">
+                <h4>${title}</h4>
+                <p>${message}</p>
+            </div>
+            <button class="contact-form-message-close" onclick="this.parentElement.parentElement.remove()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </button>
+        </div>
+    `;
+    
+    // Insert message after the form
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.parentNode.insertBefore(messageDiv, contactForm.nextSibling);
+        
+        // Auto-remove success messages after 5 seconds
+        if (type === 'success') {
+            setTimeout(() => {
+                if (messageDiv.parentNode) {
+                    messageDiv.remove();
+                }
+            }, 5000);
+        }
+    }
+}

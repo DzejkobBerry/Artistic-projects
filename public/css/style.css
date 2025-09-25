@@ -8795,3 +8795,77 @@ select:focus {
         font-size: 2rem;
     }
 }
+
+/* Contact Form Messages */
+.contact-form-message {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+    animation: slideInUp 0.4s ease-out;
+}
+
+.contact-form-message-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+}
+
+.contact-form-message-error {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
+}
+
+.contact-form-message-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.contact-form-message-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    margin-top: 0.25rem;
+}
+
+.contact-form-message-text h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.contact-form-message-text p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    opacity: 0.95;
+}
+
+.contact-form-message-close {
+    background: none;
+    border: none;
+    color: currentColor;
+    cursor: pointer;
+    padding: 0.25rem;
+    margin-left: auto;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    opacity: 0.8;
+}
+
+.contact-form-message-close:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
