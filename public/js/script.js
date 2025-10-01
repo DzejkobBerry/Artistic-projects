@@ -1226,13 +1226,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const maxImages = projectImageLimits[projectId] || 5; // Default to 5 if project not found
         const extensions = ['jpg', 'jpeg', 'png', 'webp'];
         
+        // Cache busting timestamp to force reload of updated images
+        const cacheBuster = Date.now();
+        
         // First, add the main image
         for (const ext of extensions) {
             const mainImageSrc = `/images/portfolio/${projectId}/main.${ext}`;
             const exists = await checkImageExists(mainImageSrc);
             if (exists) {
                 availableImages.push({
-                    src: mainImageSrc,
+                    src: `${mainImageSrc}?v=${cacheBuster}`,
                     alt: `${projectData[projectId]?.title || 'Project'} - Główne zdjęcie`
                 });
                 break; // Found main image, stop checking other extensions
@@ -1246,7 +1249,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const exists = await checkImageExists(imageSrc);
                 if (exists) {
                     availableImages.push({
-                        src: imageSrc,
+                        src: `${imageSrc}?v=${cacheBuster}`,
                         alt: `${projectData[projectId]?.title || 'Project'} ${i}`
                     });
                     break; // Found image with this number, move to next number
