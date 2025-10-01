@@ -1212,15 +1212,15 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Define realistic maximum images for each project based on actual content
         const projectImageLimits = {
-            'tworzenie-logo': 2,
-            'projekty-graficzne': 18,
-            'druk-3d': 8,
-            'grawer-laserowy': 14,
-            'nadruki-dtf': 30,
-            'naklejki': 7,
-            'breloczki': 8,
-            'kubki': 11,
-            'fotografia-video-dron': 22
+            'tworzenie-logo': 1,        // Only has 1.jpg and main.jpg
+            'projekty-graficzne': 18,   // Has 1.png-18.jpg (mixed extensions)
+            'druk-3d': 7,              // Has 1.jpg-7.jpg (no 8.jpg)
+            'grawer-laserowy': 13,     // Has 2.jpg-13.jpg (no 1.jpg, no 14.jpg)
+            'nadruki-dtf': 28,         // Has 2.jpg-28.jpg
+            'naklejki': 6,             // Has 1.jpg-6.jpg
+            'breloczki': 7,            // Has 2.jpg-7.jpg + one WhatsApp image
+            'kubki': 10,               // Has 1.jpg-10.jpg
+            'fotografia-video-dron': 21 // Has 1.jpg-21.jpg
         };
         
         const maxImages = projectImageLimits[projectId] || 5; // Default to 5 if project not found
