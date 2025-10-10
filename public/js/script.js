@@ -1210,27 +1210,53 @@ document.addEventListener('DOMContentLoaded', () => {
     async function detectAvailableImages(projectId) {
         const availableImages = [];
         
-        // Define realistic maximum images for each project based on actual content
-        const projectImageLimits = {
-            'tworzenie-logo': 1,        // Only has 1.jpg and main.jpg
-            'projekty-graficzne': 18,   // Has 1.png-18.jpg (mixed extensions)
-            'druk-3d': 7,              // Has 1.jpg-7.jpg (no 8.jpg)
-            'grawer-laserowy': 13,     // Has 2.jpg-13.jpg (no 1.jpg, no 14.jpg)
-            'nadruki-dtf': 28,         // Has 2.jpg-28.jpg
-            'naklejki': 6,             // Has 1.jpg-6.jpg
-            'breloczki': 7,            // Has 2.jpg-7.jpg + one WhatsApp image
-            'kubki': 10,               // Has 1.jpg-10.jpg
-            'fotografia-video-dron': 21 // Has 1.jpg-21.jpg
+        // Define realistic image ranges for each project based on actual content
+        const projectImageConfig = {
+            'tworzenie-logo': { 
+                numbers: [1], 
+                extensions: ['jpg'] 
+            },
+            'projekty-graficzne': { 
+                numbers: [1, 2, 28], // Only these files exist
+                extensions: ['png'] 
+            },
+            'druk-3d': { 
+                numbers: [1, 2, 3, 4, 5, 6, 7], 
+                extensions: ['jpg'] 
+            },
+            'grawer-laserowy': { 
+                numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], 
+                extensions: ['jpg'] 
+            },
+            'nadruki-dtf': { 
+                numbers: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28], 
+                extensions: ['jpg', 'png'] // 6.png exists
+            },
+            'naklejki': { 
+                numbers: [1, 2, 3, 4, 5, 6], 
+                extensions: ['jpg'] 
+            },
+            'breloczki': { 
+                numbers: [2, 3, 4, 5, 6, 7], // Starts from 2
+                extensions: ['jpg'] 
+            },
+            'kubki': { 
+                numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 
+                extensions: ['jpg'] 
+            },
+            'fotografia-video-dron': { 
+                numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21], 
+                extensions: ['jpg'] 
+            }
         };
         
-        const maxImages = projectImageLimits[projectId] || 5; // Default to 5 if project not found
-        const extensions = ['jpg', 'jpeg', 'png', 'webp'];
+        const config = projectImageConfig[projectId] || { numbers: [1, 2, 3, 4, 5], extensions: ['jpg'] };
         
         // Cache busting timestamp to force reload of updated images
         const cacheBuster = Date.now();
         
         // First, add the main image
-        for (const ext of extensions) {
+        for (const ext of ['jpg', 'jpeg', 'png', 'webp']) {
             const mainImageSrc = `/images/portfolio/${projectId}/main.${ext}`;
             const exists = await checkImageExists(mainImageSrc);
             if (exists) {
@@ -1242,15 +1268,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         
-        // Then check numbered images (1.jpg, 2.jpg, etc.)
-        for (let i = 1; i <= maxImages; i++) {
-            for (const ext of extensions) {
-                const imageSrc = `/images/portfolio/${projectId}/${i}.${ext}`;
+        // Then check numbered images based on project configuration
+        for (const number of config.numbers) {
+            for (const ext of config.extensions) {
+                const imageSrc = `/images/portfolio/${projectId}/${number}.${ext}`;
                 const exists = await checkImageExists(imageSrc);
                 if (exists) {
                     availableImages.push({
                         src: `${imageSrc}?v=${cacheBuster}`,
-                        alt: `${projectData[projectId]?.title || 'Project'} ${i}`
+                        alt: `${projectData[projectId]?.title || 'Project'} ${number}`
                     });
                     break; // Found image with this number, move to next number
                 }
