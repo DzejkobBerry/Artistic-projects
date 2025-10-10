@@ -1114,6 +1114,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Create main image with zoom functionality
             if (availableImages.length > 0) {
                 const mainImg = document.createElement('img');
+                mainImg.loading = 'lazy'; // Add lazy loading
                 mainImg.src = availableImages[0].src; // Use first available image
                 mainImg.alt = availableImages[0].alt;
                 mainImg.style.cssText = 'width: 100%; height: 100%; object-fit: cover; border-radius: 15px; cursor: zoom-in;';
@@ -1154,6 +1155,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 thumbnail.className = `project-thumbnail ${index === 0 ? 'active' : ''}`;
                 
                 const thumbImg = document.createElement('img');
+                thumbImg.loading = 'lazy'; // Add lazy loading
                 thumbImg.src = imageInfo.src;
                 thumbImg.alt = imageInfo.alt;
                 thumbImg.style.cssText = 'width: 100%; height: 100%; object-fit: cover; border-radius: 10px;';
@@ -1178,6 +1180,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     // Update main image
                     const newMainImg = document.createElement('img');
+                    newMainImg.loading = 'lazy'; // Add lazy loading
                     newMainImg.src = imageInfo.src;
                     newMainImg.alt = imageInfo.alt;
                     newMainImg.style.cssText = 'width: 100%; height: 100%; object-fit: cover; border-radius: 15px; cursor: zoom-in;';

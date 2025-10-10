@@ -9,23 +9,42 @@
   "routes": [
     {
       "src": "/css/(.*)",
-      "dest": "/public/css/$1"
+      "dest": "/public/css/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable",
+        "Content-Encoding": "gzip"
+      }
     },
     {
       "src": "/js/(.*)",
-      "dest": "/public/js/$1"
+      "dest": "/public/js/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable",
+        "Content-Encoding": "gzip"
+      }
     },
     {
       "src": "/images/(.*)",
-      "dest": "/public/images/$1"
+      "dest": "/public/images/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
     },
     {
       "src": "/favicon\\.(ico|svg)",
-      "dest": "/public/favicon.$1"
+      "dest": "/public/favicon.$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
     },
     {
       "src": "/(.*)",
       "dest": "/server.js"
     }
-  ]
+  ],
+  "functions": {
+    "server.js": {
+      "maxDuration": 10
+    }
+  }
 }

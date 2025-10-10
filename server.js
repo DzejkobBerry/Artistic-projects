@@ -1,14 +1,32 @@
 const express = require('express');
 const path = require('path');
+const compression = require('compression');
 const app = express();
 const PORT = process.env.PORT || 3000; // zmień z DEVIL_NODEJS_PORT na PORT
+
+// Middleware kompresji - musi być przed innymi middleware
+app.use(compression({
+    level: 6, // Poziom kompresji (1-9, 6 to dobry balans)
+    threshold: 1024, // Kompresuj tylko pliki większe niż 1KB
+    filter: (req, res) => {
+        // Kompresuj wszystko oprócz już skompresowanych formatów
+        if (req.headers['x-no-compression']) {
+            return false;
+        }
+        return compression.filter(req, res);
+    }
+}));
 
 // Ustawienie silnika szablonów EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Middleware dla plików statycznych
-app.use(express.static(path.join(__dirname, 'public')));
+// Middleware dla plików statycznych z cache headers
+app.use(express.static(path.join(__dirname, 'public'), {
+    maxAge: '1y', // Cache na rok dla plików statycznych
+    etag: true,
+    lastModified: true
+}));
 
 // Routing
 app.get('/', (req, res) => {
