@@ -1213,12 +1213,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // Define realistic image ranges for each project based on actual content
         const projectImageConfig = {
             'tworzenie-logo': { 
-                numbers: [1], 
-                extensions: ['jpg'] 
+                numbers: [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], // Missing 2.jpg, includes all others
+                extensions: ['jpg', 'JPG'] // Some files have uppercase extension
             },
             'projekty-graficzne': { 
-                numbers: [1, 2, 28], // Only these files exist
-                extensions: ['png'] 
+                numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18], // All available files from 1 to 18
+                extensions: ['png', 'jpg'] // Mixed extensions: 1,2,3,14 are .png, rest are .jpg
             },
             'druk-3d': { 
                 numbers: [1, 2, 3, 4, 5, 6, 7], 
