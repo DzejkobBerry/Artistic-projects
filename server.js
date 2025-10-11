@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 3000; // zmień z DEVIL_NODEJS_PORT na PORT
+const PORT = process.env.PORT || 3000; // Vercel ustawia PORT, lokalnie 3000
 
 // Ustawienie silnika szablonów EJS
 app.set('view engine', 'ejs');
@@ -67,10 +67,12 @@ app.get('/poczta', (req, res) => {
 //     });
 // });
 
-// Uruchomienie serwera
-app.listen(PORT, () => {
-    console.log(`Server działa na porcie ${PORT}`);
-});
+// Uruchomienie serwera tylko lokalnie (nie na Vercel Functions)
+if (process.env.VERCEL !== '1') {
+    app.listen(PORT, () => {
+        console.log(`Server działa na porcie ${PORT}`);
+    });
+}
 
 // Export dla Vercel
 module.exports = app;
