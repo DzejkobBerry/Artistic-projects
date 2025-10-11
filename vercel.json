@@ -5,7 +5,8 @@
       "src": "api/server.js",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": "views/**"
+        "includeFiles": "views/**",
+        "excludeFiles": "public/**"
       }
     }
   ],
