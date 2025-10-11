@@ -19,14 +19,18 @@ app.use(compression({
 
 // Ustawienie silnika szablonów EJS
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+// Po przeniesieniu do api/, widoki są poziom wyżej
+app.set('views', path.join(__dirname, '..', 'views'));
 
-// Middleware dla plików statycznych z cache headers
-app.use(express.static(path.join(__dirname, 'public'), {
-    maxAge: '1y', // Cache na rok dla plików statycznych
-    etag: true,
-    lastModified: true
-}));
+// Middleware dla plików statycznych (tylko lokalnie)
+// Na Vercel pliki z /public są serwowane bezpośrednio przez edge zgodnie z vercel.json
+if (!process.env.VERCEL) {
+    app.use(express.static(path.join(__dirname, '..', 'public'), {
+        maxAge: '1y',
+        etag: true,
+        lastModified: true
+    }));
+}
 
 // Routing
 app.get('/', (req, res) => {
