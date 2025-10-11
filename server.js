@@ -85,10 +85,12 @@ app.get('/poczta', (req, res) => {
 //     });
 // });
 
-// Uruchomienie serwera
-app.listen(PORT, () => {
-    console.log(`Server działa na porcie ${PORT}`);
-});
+// Uruchomienie serwera (tylko lokalnie, nie na Vercel)
+if (!process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log(`Server działa na porcie ${PORT}`);
+    });
+}
 
 // Export dla Vercel
 module.exports = app;
