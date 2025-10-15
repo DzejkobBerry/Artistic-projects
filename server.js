@@ -10,6 +10,15 @@ app.set('views', path.join(__dirname, 'views'));
 // Middleware dla plików statycznych
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Favicon routes (explicit to avoid 404s in some environments)
+app.get('/favicon.svg', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'favicon.svg'));
+});
+
+app.get('/favicon.ico', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'favicon.ico'));
+});
+
 // Routing
 app.get('/', (req, res) => {
     res.render('index', {
