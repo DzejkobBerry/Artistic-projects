@@ -1386,6 +1386,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Ensure thumbnails are visible for this custom gallery
                 thumbnailsContainer.style.display = '';
+            } else if (projectId === 'nadruki-dtf') {
+                // Use provided Imgur links for the Nadruki DTF gallery
+                const imgurUrls = [
+                    'https://imgur.com/cPdr22Y',
+                    'https://imgur.com/aaEY9em',
+                    'https://imgur.com/o3CZZ3F',
+                    'https://imgur.com/t139YG0',
+                    'https://imgur.com/6IrXddy',
+                    'https://imgur.com/ylXkQ3G',
+                    'https://imgur.com/zKwYVJS',
+                    'https://imgur.com/yIFU2Mx',
+                    'https://imgur.com/EZZ3Kdj',
+                    'https://imgur.com/yy7dhDK',
+                    'https://imgur.com/EcUkzGK',
+                    'https://imgur.com/497yzBS',
+                    'https://imgur.com/rlH9L8I',
+                    'https://imgur.com/CUAkWnv',
+                    'https://imgur.com/jHSwJoy',
+                    'https://imgur.com/GhIVp2A',
+                    'https://imgur.com/SH47MQs',
+                    'https://imgur.com/2tRuow6',
+                    'https://imgur.com/0Qbn1gW'
+                ];
+
+                // Helper to extract and sanitize Imgur ID
+                const extractImgurId = (url) => {
+                    try {
+                        const parts = url.split('/');
+                        const lastPart = parts[parts.length - 1];
+                        const id = lastPart.split('?')[0];
+                        return id && id !== 'undefined' ? id : null;
+                    } catch (e) {
+                        return null;
+                    }
+                };
+
+                const imgurIds = imgurUrls
+                    .map(extractImgurId)
+                    .filter(id => !!id);
+
+                const extensions = ['webp', 'jpg', 'png', 'jpeg'];
+
+                for (const id of imgurIds) {
+                    let matched = false;
+                    for (const ext of extensions) {
+                        const src = `https://i.imgur.com/${id}.${ext}`;
+                        // Validate existence to pick the correct extension
+                        // eslint-disable-next-line no-await-in-loop
+                        const exists = await checkImageExists(src);
+                        if (exists) {
+                            availableImages.push({
+                                src,
+                                alt: `${projectData[projectId]?.title || 'Project'} ${availableImages.length + 1}`
+                            });
+                            matched = true;
+                            break;
+                        }
+                    }
+                    // If none of the extensions matched, skip this id
+                }
+
+                // Ensure thumbnails are visible for this custom gallery
+                thumbnailsContainer.style.display = '';
             } else {
                 // Dynamically detect available images for other projects
                 availableImages = await detectAvailableImages(projectId);
