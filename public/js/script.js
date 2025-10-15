@@ -1325,6 +1325,67 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Ensure thumbnails are visible for this custom gallery
                 thumbnailsContainer.style.display = '';
+            } else if (projectId === 'naklejki') {
+                // Use provided Imgur links for the Naklejki gallery
+                const imgurUrls = [
+                    'https://imgur.com/BSTJWzw',
+                    'https://imgur.com/AAoCHTc',
+                    'https://imgur.com/cVbsvIB',
+                    'https://imgur.com/Obm5r6b',
+                    'https://imgur.com/cc5CYUA',
+                    'https://imgur.com/oYlGyTW',
+                    'https://imgur.com/CUVSlSg',
+                    'https://imgur.com/hbP5TxF',
+                    'https://imgur.com/tvOoH6Z',
+                    'https://imgur.com/iEBDDRp',
+                    'https://imgur.com/iGraxla',
+                    'https://imgur.com/pVfxWmw',
+                    'https://imgur.com/zIyl55i',
+                    'https://imgur.com/m8zoLFo',
+                    'https://imgur.com/aMow8yy',
+                    'https://imgur.com/NJcVMZg',
+                    'https://imgur.com/cb5XLog'
+                ];
+
+                // Helper to extract and sanitize Imgur ID
+                const extractImgurId = (url) => {
+                    try {
+                        const parts = url.split('/');
+                        const lastPart = parts[parts.length - 1];
+                        const id = lastPart.split('?')[0];
+                        return id && id !== 'undefined' ? id : null;
+                    } catch (e) {
+                        return null;
+                    }
+                };
+
+                const imgurIds = imgurUrls
+                    .map(extractImgurId)
+                    .filter(id => !!id);
+
+                const extensions = ['webp', 'jpg', 'png', 'jpeg'];
+
+                for (const id of imgurIds) {
+                    let matched = false;
+                    for (const ext of extensions) {
+                        const src = `https://i.imgur.com/${id}.${ext}`;
+                        // Validate existence to pick the correct extension
+                        // eslint-disable-next-line no-await-in-loop
+                        const exists = await checkImageExists(src);
+                        if (exists) {
+                            availableImages.push({
+                                src,
+                                alt: `${projectData[projectId]?.title || 'Project'} ${availableImages.length + 1}`
+                            });
+                            matched = true;
+                            break;
+                        }
+                    }
+                    // If none of the extensions matched, skip this id
+                }
+
+                // Ensure thumbnails are visible for this custom gallery
+                thumbnailsContainer.style.display = '';
             } else {
                 // Dynamically detect available images for other projects
                 availableImages = await detectAvailableImages(projectId);
