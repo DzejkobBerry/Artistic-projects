@@ -1219,6 +1219,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Ensure thumbnails are visible for this custom gallery
                 thumbnailsContainer.style.display = '';
+            } else if (projectId === 'grawer-laserowy') {
+                // Use provided Imgur links for the Grawer Laserowy gallery
+                const imgurUrls = [
+                    'https://imgur.com/rJJ4iak',
+                    'https://imgur.com/6rVXb7N',
+                    'https://imgur.com/dmImo8m',
+                    'https://imgur.com/GDBUIRU',
+                    'https://imgur.com/Ll8Y7yg',
+                    'https://imgur.com/oC0FWBu',
+                    'https://imgur.com/HZNhPAq',
+                    'https://imgur.com/MTtANxC',
+                    'https://imgur.com/9eqbKmQ',
+                    'https://imgur.com/4eGtWPQ'
+                ];
+
+                // Helper to extract Imgur ID from URL
+                const extractImgurId = (url) => {
+                    try {
+                        const parts = url.split('/');
+                        const lastPart = parts[parts.length - 1];
+                        return lastPart.split('?')[0];
+                    } catch (e) {
+                        return url;
+                    }
+                };
+
+                const imgurIds = imgurUrls.map(extractImgurId);
+                const extensions = ['webp', 'jpg', 'png', 'jpeg'];
+
+                for (const id of imgurIds) {
+                    let matched = false;
+                    for (const ext of extensions) {
+                        const src = `https://i.imgur.com/${id}.${ext}`;
+                        // Validate existence to pick the correct extension
+                        // eslint-disable-next-line no-await-in-loop
+                        const exists = await checkImageExists(src);
+                        if (exists) {
+                            availableImages.push({
+                                src,
+                                alt: `${projectData[projectId]?.title || 'Project'} ${availableImages.length + 1}`
+                            });
+                            matched = true;
+                            break;
+                        }
+                    }
+                    // If none of the extensions matched, skip this id
+                }
+
+                // Ensure thumbnails are visible for this custom gallery
+                thumbnailsContainer.style.display = '';
             } else {
                 // Dynamically detect available images for other projects
                 availableImages = await detectAvailableImages(projectId);
