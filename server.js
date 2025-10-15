@@ -69,7 +69,7 @@ app.get('/poczta', (req, res) => {
 
 // Uruchomienie serwera
 app.listen(PORT, () => {
-    console.log(`Server działa na porcie ${PORT}`);
+    console.log(`Server uruchomiony: http://localhost:${PORT}`);
 });
 
 // Export dla Vercel
