@@ -1269,6 +1269,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Ensure thumbnails are visible for this custom gallery
                 thumbnailsContainer.style.display = '';
+            } else if (projectId === 'kubki') {
+                // Use provided Imgur links for the Kubki gallery
+                const imgurUrls = [
+                    'https://imgur.com/if1BC0e',
+                    'https://imgur.com/kM1aoqC',
+                    'https://imgur.com/0jSYlu9',
+                    'https://imgur.com/t8daBX2',
+                    'https://imgur.com/9FGUwqX',
+                    'https://imgur.com/undefined',
+                    'https://imgur.com/undefined',
+                    'https://imgur.com/ms4EmGX',
+                    'https://imgur.com/undefined',
+                    'https://imgur.com/undefined',
+                    'https://imgur.com/undefined',
+                    'https://imgur.com/undefined'
+                ];
+
+                // Helper to extract and sanitize Imgur ID
+                const extractImgurId = (url) => {
+                    try {
+                        const parts = url.split('/');
+                        const lastPart = parts[parts.length - 1];
+                        const id = lastPart.split('?')[0];
+                        return id && id !== 'undefined' ? id : null;
+                    } catch (e) {
+                        return null;
+                    }
+                };
+
+                const imgurIds = imgurUrls
+                    .map(extractImgurId)
+                    .filter(id => !!id);
+
+                const extensions = ['webp', 'jpg', 'png', 'jpeg'];
+
+                for (const id of imgurIds) {
+                    let matched = false;
+                    for (const ext of extensions) {
+                        const src = `https://i.imgur.com/${id}.${ext}`;
+                        // Validate existence to pick the correct extension
+                        // eslint-disable-next-line no-await-in-loop
+                        const exists = await checkImageExists(src);
+                        if (exists) {
+                            availableImages.push({
+                                src,
+                                alt: `${projectData[projectId]?.title || 'Project'} ${availableImages.length + 1}`
+                            });
+                            matched = true;
+                            break;
+                        }
+                    }
+                    // If none of the extensions matched, skip this id
+                }
+
+                // Ensure thumbnails are visible for this custom gallery
+                thumbnailsContainer.style.display = '';
             } else {
                 // Dynamically detect available images for other projects
                 availableImages = await detectAvailableImages(projectId);
