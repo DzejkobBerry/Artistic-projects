@@ -68,20 +68,18 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Enhanced Loading animation
+// Enhanced Loading animation (optimized duration, no visual change)
 window.addEventListener('load', () => {
     const loading = document.querySelector('.loading');
     if (loading) {
-        // Show loading for much longer to appreciate the animation
+        // Keep animation but reduce artificial delay for performance
         setTimeout(() => {
             loading.classList.add('hidden');
-            // Allow more time for the fade-out animation
             setTimeout(() => {
                 loading.style.display = 'none';
-                // Enable body scroll after loading is completely hidden
                 document.body.style.overflow = 'auto';
-            }, 1200); // Increased fade-out time
-        }, 4000); // Increased from 2500ms to 4000ms for better visibility
+            }, 600); // smooth fade-out
+        }, 800); // shorter delay for faster first paint
     }
     
     // Prevent scrolling during loading
@@ -1099,8 +1097,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Function to update project images
     async function updateProjectImages(projectId) {
-        const mainImageContainer = document.querySelector('.project-image-placeholder');
-        const thumbnailsContainer = document.querySelector('.project-thumbnails');
+    const mainImageContainer = document.querySelector('.project-image-placeholder');
+    const thumbnailsContainer = document.querySelector('.project-thumbnails');
         
         if (mainImageContainer && thumbnailsContainer) {
             // Clear existing content
@@ -1146,24 +1144,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 const imgurIds = imgurUrls.map(extractImgurId);
                 const extensions = ['webp', 'jpg', 'png', 'jpeg'];
 
-                for (const id of imgurIds) {
-                    let matched = false;
-                    for (const ext of extensions) {
-                        const src = `https://i.imgur.com/${id}.${ext}`;
-                        // Validate existence to pick the correct extension
-                        // eslint-disable-next-line no-await-in-loop
-                        const exists = await checkImageExists(src);
-                        if (exists) {
-                            availableImages.push({
-                                src,
-                                alt: `${projectData[projectId]?.title || 'Project'} ${availableImages.length + 1}`
-                            });
-                            matched = true;
-                            break;
-                        }
-                    }
-                    // If none of the extensions matched, skip this id
-                }
+                // Resolve best working URL per ID in parallel for performance
+                const results = await Promise.all(imgurIds.map(async (id, index) => {
+                    const base = `https://i.imgur.com/${id}`;
+                    const src = await findExistingImageUrl(base, extensions);
+                    return src ? {
+                        src,
+                        alt: `${projectData[projectId]?.title || 'Project'} ${index + 1}`
+                    } : null;
+                }));
+
+                availableImages = results.filter(Boolean);
 
                 // Ensure thumbnails are visible for this custom gallery
                 thumbnailsContainer.style.display = '';
@@ -1671,15 +1662,40 @@ document.addEventListener('DOMContentLoaded', () => {
         return availableImages;
     }
     
-    // Function to check if an image exists
+    // Cache for image existence checks to avoid repeated requests
+    const imageExistenceCache = new Map();
+
+    // Function to check if an image exists (with cache)
     function checkImageExists(src) {
+        const cached = imageExistenceCache.get(src);
+        if (cached !== undefined) return Promise.resolve(cached);
         return new Promise((resolve) => {
             const img = new Image();
-            img.onload = () => resolve(true);
-            img.onerror = () => resolve(false);
+            img.referrerPolicy = 'no-referrer';
+            img.onload = () => { imageExistenceCache.set(src, true); resolve(true); };
+            img.onerror = () => { imageExistenceCache.set(src, false); resolve(false); };
             img.src = src;
         });
     }
+
+    // Find first existing URL among candidate extensions (in parallel)
+    async function findExistingImageUrl(baseUrl, extensions) {
+        const checks = extensions.map(ext => {
+            const src = `${baseUrl}.${ext}`;
+            return checkImageExists(src).then(exists => exists ? src : null);
+        });
+        const results = await Promise.all(checks);
+        return results.find(Boolean) || null;
+    }
+
+    // Apply lazy-loading to gallery/portfolio images without affecting layout
+    document.addEventListener('DOMContentLoaded', () => {
+        const lazyImgs = document.querySelectorAll('img.portfolio-img, img.gallery-img, img.owner-photo');
+        lazyImgs.forEach(img => {
+            img.setAttribute('loading', 'lazy');
+            img.setAttribute('decoding', 'async');
+        });
+    });
     
     // Function to open image zoom modal
     function openImageZoom(imageSrc, imageAlt) {

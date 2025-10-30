@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const compression = require('compression');
 const app = express();
 const PORT = process.env.PORT || 3000; // zmień z DEVIL_NODEJS_PORT na PORT
 
@@ -7,8 +8,14 @@ const PORT = process.env.PORT || 3000; // zmień z DEVIL_NODEJS_PORT na PORT
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Middleware dla plików statycznych
-app.use(express.static(path.join(__dirname, 'public')));
+// Włącz kompresję gzip dla wszystkich odpowiedzi
+app.use(compression());
+
+// Middleware dla plików statycznych z cache
+app.use(express.static(path.join(__dirname, 'public'), {
+    maxAge: '7d',
+    etag: true
+}));
 
 // Favicon routes (explicit to avoid 404s in some environments)
 app.get('/favicon.svg', (req, res) => {
