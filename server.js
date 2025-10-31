@@ -28,6 +28,9 @@ app.get('/favicon.ico', (req, res) => {
 
 // Routing
 app.get('/', (req, res) => {
+    // CDN cache: ISR-like na Vercel dla statycznej strony głównej
+    // converted from pure SSR render → CDN-cached HTML for better Fast Origin Transfer
+    res.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
     res.render('index', {
         title: 'Artistic Projects - Creativity without limits',
         currentPage: 'home'
@@ -35,6 +38,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/about', (req, res) => {
+    // CDN cache: treści informacyjne – bez danych użytkownika
+    // converted from pure SSR render → CDN-cached HTML for better caching performance
+    res.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
     res.render('about', {
         title: 'About Us - Artistic Projects',
         currentPage: 'about'
@@ -42,6 +48,9 @@ app.get('/about', (req, res) => {
 });
 
 app.get('/services', (req, res) => {
+    // CDN cache: strony usług są statyczne
+    // converted from pure SSR render → CDN-cached HTML
+    res.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
     res.render('services', {
         title: 'Our Services - Artistic Projects',
         currentPage: 'services'
@@ -49,6 +58,9 @@ app.get('/services', (req, res) => {
 });
 
 app.get('/portfolio', (req, res) => {
+    // CDN cache: HTML w portfolio jest statyczny, obrazy ładowane z CDN
+    // converted from pure SSR render → CDN-cached HTML
+    res.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
     res.render('portfolio', {
         title: 'Our Portfolio - Artistic Projects',
         currentPage: 'portfolio'
@@ -56,6 +68,9 @@ app.get('/portfolio', (req, res) => {
 });
 
 app.get('/cooperation', (req, res) => {
+    // CDN cache: strona współpracy – statyczna
+    // converted from pure SSR render → CDN-cached HTML
+    res.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
     res.render('cooperation', {
         title: 'Cooperation - Artistic Projects',
         currentPage: 'cooperation'
